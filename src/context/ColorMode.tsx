@@ -25,7 +25,23 @@ export default function ColorModeProvider({ children }: Props) {
   const [mode, setMode] = useState<ColorMode>("light");
 
   // MUI Theme
-  const theme = useMemo(() => createTheme({ palette: { mode } }), [mode]);
+  const theme = useMemo(
+    () =>
+      createTheme({
+        typography: {
+          allVariants: {
+            color: mode === "light" ? "#4d4d4d" : "#FFFFFC",
+          },
+        },
+        palette: {
+          mode,
+          background: {
+            default: mode === "light" ? "#F5F5F5" : "#2D3032",
+          },
+        },
+      }),
+    [mode]
+  );
 
   // Current color mode
   const colorMode = useMemo(

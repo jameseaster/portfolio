@@ -24,32 +24,45 @@ export default function AppRoutes() {
   const theme = useTheme();
 
   return (
-    <Router>
-      <Grid container sx={{ m: 1 }}>
-        {links.map(({ label, route }) => (
-          <Typography variant="body1" sx={{ p: 1 }}>
-            <Link
-              to={route}
-              style={{
-                textDecoration: "none",
-                color: theme.palette.text.primary,
-              }}
-            >
-              {label}
-            </Link>
-          </Typography>
-        ))}
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Router>
+        {/* Header */}
+        <Grid item p={2} xs={12} container justifyContent="space-between">
+          {/* Navigation Links */}
+          <Grid container xs={10} item>
+            {links.map(({ label, route }) => (
+              <Typography key={label} variant="body1" sx={{ p: 1 }}>
+                <Link
+                  to={route}
+                  style={{
+                    textDecoration: "none",
+                    color: theme.typography.body1.color,
+                  }}
+                >
+                  {label}
+                </Link>
+              </Typography>
+            ))}
+          </Grid>
+          {/* Theme Color Toggle */}
+          <Grid item>
+            <ColorButton />
+          </Grid>
+        </Grid>
 
-        {/* Theme Color Toggle */}
-        <ColorButton />
-      </Grid>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/info" element={<Info />} />
-        <Route path="/work" element={<Work />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+        {/* Pages */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/info" element={<Info />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
+    </Grid>
   );
 }
