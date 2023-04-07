@@ -7,7 +7,7 @@ import AnimatedIcon from "../components/AnimatedIcon";
  */
 const Home: React.FC<{}> = () => {
   return (
-    <Page>
+    <Page pageStyles={{ justifyContent: "center" }}>
       <AnimatedIcon />
     </Page>
   );

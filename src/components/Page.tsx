@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 // Types
 export interface PageProps {
   children?: React.ReactNode;
+  pageStyles?: { [key: string]: string | number };
 }
 
 // Constants
@@ -22,15 +23,14 @@ const PAGE_ANIMATIONS = {
 /**
  * Page
  */
-const Page: React.FC<PageProps> = ({ children }) => {
+const Page: React.FC<PageProps> = ({ pageStyles, children }) => {
   return (
     <motion.div {...PAGE_ANIMATIONS}>
       <Grid
         display="flex"
         alignItems="center"
         flexDirection="column"
-        justifyContent="center"
-        style={{ height: `${100 - HEADER_HEIGHT}vh`, padding: 20 }}
+        sx={{ height: `${100 - HEADER_HEIGHT}vh`, m: 3, ...pageStyles }}
       >
         {children}
       </Grid>

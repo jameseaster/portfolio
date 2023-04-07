@@ -35,6 +35,9 @@ export default function ColorModeProvider({ children }: Props) {
         },
         palette: {
           mode,
+          primary: {
+            main: mode === "light" ? "#4d4d4d" : "#FFFFFC",
+          },
           background: {
             default: mode === "light" ? "#F5F5F5" : "#2D3032",
           },

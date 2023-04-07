@@ -42,7 +42,11 @@ const Navigation: React.FC<NavigationProps> = () => {
     >
       <Grid container xs={10} item>
         {links.map(({ Icon, route }) => (
-          <IconButton color="inherit" onClick={() => navigate(route)}>
+          <IconButton
+            key={route}
+            color="inherit"
+            onClick={() => navigate(route)}
+          >
             {Icon}
           </IconButton>
         ))}

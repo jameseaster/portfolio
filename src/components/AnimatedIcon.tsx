@@ -42,7 +42,7 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({ size }) => {
       animate="visible"
       viewBox="0 0 65 65"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ height: `${size}vh`, width: "auto", maxHeight: "400px" }}
+      style={{ height: `${size}vh`, width: "auto", maxHeight: "300px" }}
     >
       <motion.path
         variants={letterVariants(2)}
@@ -54,11 +54,11 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({ size }) => {
       {/* Bottom left */}
       <motion.path variants={edgeVariants(2)} d="M 20 64 h -19 v -48" />
       {/* Bottom Right */}
-      <motion.path variants={edgeVariants(1)} d="M 20 64 h 44" />
+      <motion.path variants={edgeVariants(1)} d="M 19 64 h 45" />
       {/* Left */}
-      <motion.path variants={edgeVariants(2)} d="M 1 1 v 15" />
+      <motion.path variants={edgeVariants(2)} d="M 1 1 v 16" />
       {/* Top */}
-      <motion.path variants={edgeVariants(2)} d="M 0 1 h 45" />
+      <motion.path variants={edgeVariants(2)} d="M 0 1 h 46" />
     </motion.svg>
   );
 };
