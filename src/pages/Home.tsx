@@ -1,8 +1,16 @@
-export default function Home() {
+import React from "react";
+import Page from "../components/Page";
+import AnimatedIcon from "../components/AnimatedIcon";
+
+/**
+ * Home Page
+ */
+const Home: React.FC<{}> = () => {
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Home Page</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-    </div>
+    <Page>
+      <AnimatedIcon />
+    </Page>
   );
-}
+};
+
+export default Home;

@@ -1,8 +1,16 @@
-export default function Info() {
+import React from "react";
+import Page from "../components/Page";
+
+/**
+ * Info Page
+ */
+const Info: React.FC<{}> = () => {
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Info Page</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-    </div>
+    <Page>
+      <h2>Info</h2>
+      <p>Add a professional bio, easy to read an fun.</p>
+    </Page>
   );
-}
+};
+
+export default Info;

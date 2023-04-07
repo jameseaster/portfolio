@@ -1,8 +1,16 @@
-export default function Contact() {
+import React from "react";
+import Page from "../components/Page";
+
+/**
+ * Contact Page
+ */
+const Contact: React.FC<{}> = () => {
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Contact Page</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-    </div>
+    <Page>
+      <h2>Contact</h2>
+      <p>Add email form, notifications, & loading state</p>
+    </Page>
   );
-}
+};
+
+export default Contact;

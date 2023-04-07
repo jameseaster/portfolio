@@ -1,8 +1,16 @@
-export default function Work() {
+import React from "react";
+import Page from "../components/Page";
+
+/**
+ * Work Page
+ */
+const Work: React.FC<{}> = () => {
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Work Page</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-    </div>
+    <Page>
+      <h2>Work</h2>
+      <p>Add interactive project cards here</p>
+    </Page>
   );
-}
+};
+
+export default Work;
