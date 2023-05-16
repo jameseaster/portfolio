@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Button from "@mui/material/Button";
 import isEmail from "validator/lib/isEmail";
+import Snackbar from "@mui/material/Snackbar";
 import TextField from "@mui/material/TextField";
+import Alert, { AlertColor } from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 
+interface SnackProps {
+  open: boolean;
+  message: string;
+  severity: AlertColor | undefined;
+}
+
 // Initial state values
-const initialValidation = { name: true, email: true, message: true };
 const initialContactForm = { name: "", email: "", message: "" };
+const initialValidation = { name: true, email: true, message: true };
+const initialSnack = { open: false, message: "", severity: undefined };
 
 /**
  * Contact Page
@@ -14,6 +24,7 @@ const initialContactForm = { name: "", email: "", message: "" };
 const ContactForm: React.FC<{}> = () => {
   // Local State
   const [loading, setLoading] = useState(false);
+  const [snack, setSnack] = useState<SnackProps>(initialSnack);
   const [validated, setValidated] = useState(initialValidation);
   const [contactForm, setContactForm] = useState(initialContactForm);
 
@@ -32,17 +43,38 @@ const ContactForm: React.FC<{}> = () => {
   const sendMessage = async () => {
     const name = contactForm.name.length > 1;
     const email = isEmail(contactForm.email);
-    const message = contactForm.email.length > 10;
+    const message = contactForm.message.length > 10;
     setValidated({ name, email, message });
-    if (name && email && validated) {
+    if (name && email && message && validated) {
       setLoading(true);
-      console.log(contactForm);
-      const result = await new Promise((r) => setTimeout(r, 3000));
-      console.log({ result });
-      // TODO: If successfully sent, clear form, ADD SNACKS
-      setContactForm(initialContactForm);
-      setLoading(false);
+      try {
+        // Send message to email
+        const url = process.env.REACT_APP_LAMBDA_SES || "";
+        let result = await axios.post(url, contactForm);
+        // Check for errors
+        if (result.data.error) throw new Error(result.data.message);
+        // Create notification
+        setSnack({ open: true, severity: "success", message: "Message sent!" });
+        // Clear form data
+        setContactForm(initialContactForm);
+      } catch (err: any) {
+        // Log error
+        console.error(err);
+        setSnack({ open: true, severity: "error", message: "Failed to send" });
+      } finally {
+        // Resolve loading
+        setLoading(false);
+      }
     }
+  };
+
+  // Close snack
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") return;
+    setSnack((snack) => ({ ...snack, open: false }));
   };
 
   // Check Contact Form Name Validation
@@ -114,6 +146,16 @@ const ContactForm: React.FC<{}> = () => {
       >
         {loading ? <CircularProgress size={24} color="inherit" /> : "Send"}
       </Button>
+      <Snackbar
+        open={snack.open}
+        onClose={handleClose}
+        autoHideDuration={6000}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity={snack.severity}>
+          {snack.message}
+        </Alert>
+      </Snackbar>
     </>
   );
 };
