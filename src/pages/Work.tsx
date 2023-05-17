@@ -11,7 +11,7 @@ import ProjectCard from "../components/ProjectCard";
 const Work: React.FC<{}> = () => {
   return (
     <Page>
-      <Typography variant="h5" sx={{ mb: 3 }}>
+      <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
         Recent Work
       </Typography>
       <Grid

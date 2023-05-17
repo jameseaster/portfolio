@@ -1,5 +1,6 @@
 import React from "react";
 import Page from "../components/Page";
+import Typography from "@mui/material/Typography";
 import ContactForm from "../components/ContactForm";
 
 /**
@@ -8,7 +9,9 @@ import ContactForm from "../components/ContactForm";
 const Contact: React.FC<{}> = () => {
   return (
     <Page>
-      <h2>Contact</h2>
+      <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
+        Recent Work
+      </Typography>
       <ContactForm />
     </Page>
   );

@@ -30,7 +30,7 @@ const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
       >
         <CardMedia
           alt={label}
-          height="200"
+          height="240"
           image={image}
           component="img"
           sx={{

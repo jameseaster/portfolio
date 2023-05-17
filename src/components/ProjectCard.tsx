@@ -5,7 +5,6 @@ import ProjectGallery from "./ProjectGallery";
 import ProjectCardMedia from "./ProjectCardMedia";
 import ProjectCardContent from "./ProjectCardContent";
 import ProjectCardActions from "./ProjectCardActions";
-import { SvgIconComponent } from "@mui/icons-material";
 
 // Types
 export interface ProjectCardProps {
@@ -27,8 +26,9 @@ interface AppImage {
 interface CardActionIcon {
   id: string;
   link: string;
+  disabled: boolean;
+  icon: string;
   tooltip: string;
-  Icon: SvgIconComponent;
 }
 
 /**
@@ -51,7 +51,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 400 }}>
         <ProjectCardMedia
           label={label}
           image={image}

@@ -2,6 +2,8 @@
 import React from "react";
 import Dialog from "@mui/material/Dialog";
 import ImageList from "@mui/material/ImageList";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
 import DialogTitle from "@mui/material/DialogTitle";
 import ImageListItem from "@mui/material/ImageListItem";
 
@@ -29,20 +31,30 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
   handleClose,
 }) => {
   return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>{label}</DialogTitle>
-      <ImageList
-        cols={1}
-        rowHeight={500}
-        sx={{ minWidth: "80%", overflow: "auto" }}
+    <Dialog fullWidth maxWidth="lg" onClose={handleClose} open={open}>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={{
+          top: 8,
+          right: 8,
+          position: "absolute",
+          color: (theme) => theme.palette.grey[500],
+        }}
       >
-        {gallery.map(({ image, label }) => (
-          <ImageListItem key={image}>
+        <CloseIcon />
+      </IconButton>
+
+      <DialogTitle sx={{ pb: 0 }}>{label} Images</DialogTitle>
+      <ImageList cols={1}>
+        {gallery.map(({ id, image, label }) => (
+          <ImageListItem key={id}>
             <img
               alt={label}
+              src={image}
               loading="lazy"
-              src={`${image}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              // src={`${image}?w=164&h=164&fit=crop&auto=format`}
+              // srcSet={`${image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
             />
           </ImageListItem>
         ))}
