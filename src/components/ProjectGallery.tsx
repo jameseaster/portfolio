@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import DialogTitle from "@mui/material/DialogTitle";
 import ImageListItem from "@mui/material/ImageListItem";
+import { useTheme } from "@mui/material";
 
 // Types
 export interface ProjectGalleryProps {
@@ -30,8 +31,11 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
   gallery,
   handleClose,
 }) => {
+  // Styles
+  const theme = useTheme();
+
   return (
-    <Dialog fullWidth maxWidth="lg" onClose={handleClose} open={open}>
+    <Dialog fullWidth open={open} maxWidth="md" onClose={handleClose}>
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -48,10 +52,14 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       <DialogTitle sx={{ pb: 0 }}>{label} Images</DialogTitle>
       <ImageList cols={1}>
         {gallery.map(({ id, image, label }) => (
-          <ImageListItem key={id}>
+          <ImageListItem
+            sx={{ borderRadius: "4px", m: 3, boxShadow: theme.shadows[12] }}
+            key={id}
+          >
             <img
               alt={label}
               src={image}
+              style={{ borderRadius: "4px" }}
               loading="lazy"
               // src={`${image}?w=164&h=164&fit=crop&auto=format`}
               // srcSet={`${image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}

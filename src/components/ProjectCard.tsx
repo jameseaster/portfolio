@@ -1,10 +1,14 @@
 // Imports
 import React, { useState } from "react";
 import Card from "@mui/material/Card";
+import Collapse from "@mui/material/Collapse";
 import ProjectGallery from "./ProjectGallery";
-import ProjectCardMedia from "./ProjectCardMedia";
-import ProjectCardContent from "./ProjectCardContent";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import ProjectCardInfo from "./ProjectCardInfo";
+import CardContent from "@mui/material/CardContent";
 import ProjectCardActions from "./ProjectCardActions";
+import CardActionArea from "@mui/material/CardActionArea";
 
 // Types
 export interface ProjectCardProps {
@@ -42,8 +46,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   details,
   gallery,
 }) => {
+  // Styles
+  const theme = useTheme();
+
   // Local State
   const [open, setOpen] = useState(false);
+  const [hover, setHover] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   // Helper functions
@@ -51,20 +59,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <>
-      <Card sx={{ maxWidth: 400 }}>
-        <ProjectCardMedia
-          label={label}
-          image={image}
-          handleClick={() => setOpen(true)}
-        />
-        <ProjectCardContent
-          label={label}
-          short={short}
-          details={details}
+      <Card sx={{ maxWidth: 370, boxShadow: theme.shadows[20] }}>
+        <CardActionArea
+          disableRipple
+          onClick={() => setOpen(true)}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          <ProjectCardInfo
+            short={short}
+            label={label}
+            image={image}
+            hover={hover}
+          />
+        </CardActionArea>
+
+        <ProjectCardActions
+          icons={icons}
           expanded={expanded}
           toggleDetails={toggleDetails}
         />
-        <ProjectCardActions icons={icons} />
+
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            {details.map((text, index) => (
+              <Typography
+                key={index}
+                paragraph
+                variant="body1"
+                color="text.secondary"
+              >
+                {text}
+              </Typography>
+            ))}
+          </CardContent>
+        </Collapse>
       </Card>
 
       <ProjectGallery
