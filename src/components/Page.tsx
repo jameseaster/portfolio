@@ -1,12 +1,13 @@
 // Imports
 import React from "react";
 import Grid from "@mui/material/Grid";
+import { SxProps } from "@mui/system";
 import { motion } from "framer-motion";
 
 // Types
 export interface PageProps {
+  sx?: SxProps;
   children?: React.ReactNode;
-  pageStyles?: { [key: string]: string | number };
 }
 
 // Constants
@@ -23,14 +24,14 @@ const PAGE_ANIMATIONS = {
 /**
  * Page
  */
-const Page: React.FC<PageProps> = ({ pageStyles, children }) => {
+const Page: React.FC<PageProps> = ({ sx, children }) => {
   return (
     <motion.div {...PAGE_ANIMATIONS}>
       <Grid
         display="flex"
         alignItems="center"
         flexDirection="column"
-        sx={{ height: `${100 - HEADER_HEIGHT}vh`, m: 3, ...pageStyles }}
+        sx={{ height: `${100 - HEADER_HEIGHT}vh`, m: 3, ...sx }}
       >
         {children}
       </Grid>

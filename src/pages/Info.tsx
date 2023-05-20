@@ -1,13 +1,15 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Page from "../components/Page";
-import { Card, CardContent, useTheme } from "@mui/material";
+import Card from "@mui/material/Card";
+import { useTheme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import avatar from "../assets/avatar.png";
-import Typography from "@mui/material/Typography";
-import AbstractTooltip from "../components/AbstractTooltip";
-import IconButton from "@mui/material/IconButton";
 import { mediaIcons } from "../data/mediaIcons";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import CardContent from "@mui/material/CardContent";
+import AbstractTooltip from "../components/AbstractTooltip";
 
 /**
  * Info Page
@@ -24,9 +26,10 @@ const Info: React.FC<{}> = () => {
               alt="James"
               src={avatar}
               sx={{
-                m: 1,
+                m: 3,
                 width: 150,
                 height: 150,
+                mb: { md: 3, sm: 2, xs: 1 },
                 boxShadow: theme.shadows[24],
               }}
             />

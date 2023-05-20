@@ -55,7 +55,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <>
-      <Card elevation={20} sx={{ maxWidth: 370 }}>
+      <Card
+        elevation={20}
+        sx={{ maxWidth: 370, transition: "all ease-in-out 0.75s" }}
+      >
         <CardActionArea
           disableRipple
           onClick={() => setOpen(true)}
