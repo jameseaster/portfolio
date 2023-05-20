@@ -36,7 +36,7 @@ const ProjectCardActions: React.FC<ProjectCardActionsProps> = ({
 
   return (
     <CardActions
-      sx={{ justifyContent: "space-between", alignItems: "center", pt: 0 }}
+      sx={{ justifyContent: "space-between", alignItems: "center", pt: 1 }}
     >
       <Grid container>
         {icons?.map(({ id, icon, link, tooltip, disabled }) => (

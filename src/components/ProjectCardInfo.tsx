@@ -38,7 +38,22 @@ const ProjectCardInfo: React.FC<ProjectCardInfoProps> = ({
           borderBottom: `1px solid ${theme.palette.grey[200]}`,
         }}
       />
-      <CardContent sx={{ p: 2 }}>
+      {/* Overlay */}
+      <Typography
+        sx={{
+          display: hover ? "" : "none",
+          position: "absolute",
+          top: 90,
+          left: 40,
+          fontSize: 50,
+          transition: "all ease-in-out 1.25s",
+          opacity: 0.8,
+          color: hover ? "white" : "transparent",
+        }}
+      >
+        Screenshots
+      </Typography>
+      <CardContent sx={{ p: 2, pb: 1 }}>
         <Typography gutterBottom variant="h6" component="div">
           {label}
         </Typography>

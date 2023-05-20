@@ -331,7 +331,7 @@ export const projects = [
     short:
       "A website crafted to share audio recordings, videos, music notation, & photos of my music.",
     details: [
-      `Features: Full customized audio player, photo gallery, YouTube player with sheet music PDFs, and contact form`,
+      `Features: Fully customized audio player, photo gallery, YouTube player with sheet music PDFs, and contact form`,
       `TypeScript, React, React-Router, Ant-Design, Craco, Axios, Howler, EmailJS, Netlify`,
     ],
     gallery: [
