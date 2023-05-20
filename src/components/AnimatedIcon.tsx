@@ -3,9 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Types
-export interface AnimatedIconProps {
-  size?: number;
-}
+export interface AnimatedIconProps {}
 
 // Animation constants
 const letterVariants = (duration = 4) => ({
@@ -32,7 +30,7 @@ const edgeVariants = (duration = 4) => ({
 /**
  * AnimatedIcon
  */
-const AnimatedIcon: React.FC<AnimatedIconProps> = ({ size }) => {
+const AnimatedIcon: React.FC<AnimatedIconProps> = () => {
   return (
     <motion.svg
       width="65"
@@ -42,7 +40,7 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({ size }) => {
       animate="visible"
       viewBox="0 0 65 65"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ height: `${size}vh`, width: "auto", maxHeight: "300px" }}
+      style={{ height: "100%", width: "auto" }}
     >
       <motion.path
         variants={letterVariants(2)}

@@ -33,27 +33,13 @@ const ProjectCardInfo: React.FC<ProjectCardInfoProps> = ({
         image={image}
         component="img"
         sx={{
+          borderRadius: "4px",
           transition: "all ease-in-out 0.25s",
           filter: `brightness(${hover ? "70%" : "100%"})`,
           borderBottom: `1px solid ${theme.palette.grey[200]}`,
         }}
       />
-      {/* Overlay */}
-      <Typography
-        sx={{
-          display: hover ? "" : "none",
-          position: "absolute",
-          top: 90,
-          left: 40,
-          fontSize: 50,
-          transition: "all ease-in-out 1.25s",
-          opacity: 0.8,
-          color: hover ? "white" : "transparent",
-        }}
-      >
-        Screenshots
-      </Typography>
-      <CardContent sx={{ p: 2, pb: 1 }}>
+      <CardContent sx={{ px: 0, pb: 1 }}>
         <Typography gutterBottom variant="h6" component="div">
           {label}
         </Typography>

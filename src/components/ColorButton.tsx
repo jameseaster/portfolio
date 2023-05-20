@@ -1,4 +1,4 @@
-// Imports
+import AbstractTooltip from "./AbstractTooltip";
 import { useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import { useColorMode } from "../context/ColorMode";
@@ -12,8 +12,17 @@ export function ColorButton() {
   const theme = useTheme();
   const colorMode = useColorMode();
   return (
-    <IconButton onClick={colorMode.toggle} color="inherit">
-      {theme.palette.mode === "dark" ? <LightModeIcon /> : <ModeNightIcon />}
-    </IconButton>
+    <AbstractTooltip
+      title={`${theme.palette.mode === "dark" ? "Light" : "Dark"} Mode`}
+      placement="bottom"
+    >
+      <IconButton onClick={colorMode.toggle} color="inherit">
+        {theme.palette.mode === "dark" ? (
+          <LightModeIcon fontSize="large" />
+        ) : (
+          <ModeNightIcon fontSize="large" />
+        )}
+      </IconButton>
+    </AbstractTooltip>
   );
 }

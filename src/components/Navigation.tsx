@@ -1,15 +1,16 @@
 // Imports
 import React from "react";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { ColorButton } from "./ColorButton";
 import { useNavigate } from "react-router-dom";
+import AbstractTooltip from "./AbstractTooltip";
 import IconButton from "@mui/material/IconButton";
 // Nav Icons
 import HomeIcon from "@mui/icons-material/HomeOutlined";
 import InfoIcon from "@mui/icons-material/InfoOutlined";
 import WorkIcon from "@mui/icons-material/BuildOutlined";
 import ContactIcon from "@mui/icons-material/MailOutlined";
-import AbstractTooltip from "./AbstractTooltip";
 
 // Types
 export interface NavigationProps {}
@@ -42,12 +43,12 @@ const Navigation: React.FC<NavigationProps> = () => {
     <Grid
       container
       alignItems="center"
-      justifyContent="space-between"
-      sx={{ p: 2, height: `${HEADER_HEIGHT}vh` }}
+      justifyContent="center"
+      sx={{ mt: 2, height: `${HEADER_HEIGHT}vh` }}
     >
-      <Grid container xs={10} item>
-        {links.map(({ Icon, route, tooltip }) => (
-          <AbstractTooltip key={route} title={tooltip} placement="bottom">
+      {links.map(({ Icon, route, tooltip }) => (
+        <Box key={route} sx={{ mr: 3 }}>
+          <AbstractTooltip title={tooltip} placement="bottom">
             <IconButton
               key={route}
               color="inherit"
@@ -56,11 +57,9 @@ const Navigation: React.FC<NavigationProps> = () => {
               {Icon}
             </IconButton>
           </AbstractTooltip>
-        ))}
-      </Grid>
-      <Grid item>
-        <ColorButton />
-      </Grid>
+        </Box>
+      ))}
+      <ColorButton />
     </Grid>
   );
 };

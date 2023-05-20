@@ -10,10 +10,10 @@ interface ProjectActionIconProps {
 }
 
 const ActionIcons: { [key: string]: React.ReactNode } = {
-  web: <WebIcon fontSize="large" />,
-  code: <CodeIcon fontSize="large" />,
-  apple: <AppleIcon fontSize="large" />,
-  google: <GoogleIcon fontSize="large" />,
+  web: <WebIcon />,
+  code: <CodeIcon />,
+  apple: <AppleIcon />,
+  google: <GoogleIcon />,
 };
 
 /**

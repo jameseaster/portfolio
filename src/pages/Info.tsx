@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Page from "../components/Page";
 import Card from "@mui/material/Card";
@@ -15,7 +15,16 @@ import AbstractTooltip from "../components/AbstractTooltip";
  * Info Page
  */
 const Info: React.FC<{}> = () => {
+  // Style
   const theme = useTheme();
+
+  // Local State
+  const [gray, setGray] = useState(1);
+
+  // Animate grayscale
+  useEffect(() => {
+    setGray(0);
+  }, []);
 
   return (
     <Page>
@@ -29,8 +38,10 @@ const Info: React.FC<{}> = () => {
                 m: 3,
                 width: 150,
                 height: 150,
-                mb: { md: 3, sm: 2, xs: 1 },
+                mb: { md: 2, xs: 1 },
+                filter: `grayscale(${gray})`,
                 boxShadow: theme.shadows[24],
+                transition: "filter ease-in-out 1.25s",
               }}
             />
             <Typography paragraph sx={{ mt: 3 }}>

@@ -1,11 +1,8 @@
 // Imports
 import React, { useState } from "react";
 import Card from "@mui/material/Card";
-import Collapse from "@mui/material/Collapse";
 import ProjectGallery from "./ProjectGallery";
 import ProjectCardInfo from "./ProjectCardInfo";
-import Typography from "@mui/material/Typography";
-import CardContent from "@mui/material/CardContent";
 import ProjectCardActions from "./ProjectCardActions";
 import CardActionArea from "@mui/material/CardActionArea";
 
@@ -48,16 +45,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   // Local State
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-
-  // Helper functions
-  const toggleDetails = () => setExpanded((state) => !state);
 
   return (
     <>
       <Card
         elevation={20}
-        sx={{ maxWidth: 370, transition: "all ease-in-out 0.75s" }}
+        sx={{ p: 2, pb: 1, maxWidth: 370, transition: "all ease-in-out 0.75s" }}
       >
         <CardActionArea
           disableRipple
@@ -72,32 +65,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             hover={hover}
           />
         </CardActionArea>
-
-        <ProjectCardActions
-          icons={icons}
-          expanded={expanded}
-          toggleDetails={toggleDetails}
-        />
-
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            {details.map((text, index) => (
-              <Typography
-                key={index}
-                paragraph
-                variant="body1"
-                color="text.secondary"
-              >
-                {text}
-              </Typography>
-            ))}
-          </CardContent>
-        </Collapse>
+        <ProjectCardActions icons={icons} />
       </Card>
 
       <ProjectGallery
         open={open}
         label={label}
+        details={details}
         gallery={gallery}
         handleClose={() => setOpen(false)}
       />

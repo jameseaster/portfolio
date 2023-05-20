@@ -3,15 +3,12 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material";
 import AbstractTooltip from "./AbstractTooltip";
-import RotateArrowIcon from "./RotateArrowIcon";
 import IconButton from "@mui/material/IconButton";
 import CardActions from "@mui/material/CardActions";
 import ProjectActionIcon from "./ProjectActionIcon";
 
 // Types
 interface ProjectCardActionsProps {
-  expanded: boolean;
-  toggleDetails: () => void;
   icons: CardActionIcon[] | undefined;
 }
 
@@ -26,50 +23,37 @@ interface CardActionIcon {
 /**
  * ProjectCardActions are the icons / links at the bottom of a ProjectCard
  */
-const ProjectCardActions: React.FC<ProjectCardActionsProps> = ({
-  icons,
-  expanded,
-  toggleDetails,
-}) => {
+const ProjectCardActions: React.FC<ProjectCardActionsProps> = ({ icons }) => {
   // Style
   const theme = useTheme();
 
   return (
-    <CardActions
-      sx={{ justifyContent: "space-between", alignItems: "center", pt: 1 }}
-    >
-      <Grid container>
-        {icons?.map(({ id, icon, link, tooltip, disabled }) => (
-          <AbstractTooltip placement="bottom" title={tooltip} key={id}>
-            <div>
-              <IconButton
-                component="button"
-                disabled={disabled}
-                sx={{ mr: 1, boxShadow: theme.shadows[3] }}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  window.open(link, "_blank", "noreferrer");
-                }}
-              >
-                <ProjectActionIcon icon={icon} />
-              </IconButton>
-            </div>
-          </AbstractTooltip>
-        ))}
-      </Grid>
-      <Grid>
-        <AbstractTooltip placement="bottom" title="View Details">
-          <IconButton
-            onClick={(event) => {
-              event.stopPropagation();
-              toggleDetails();
-            }}
-          >
-            <RotateArrowIcon rotate={expanded} />
-          </IconButton>
-        </AbstractTooltip>
-      </Grid>
-    </CardActions>
+    <>
+      <CardActions>
+        <Grid
+          container
+          sx={{ justifyContent: "flex-end", alignItems: "center" }}
+        >
+          {icons?.map(({ id, icon, link, tooltip, disabled }) => (
+            <AbstractTooltip placement="bottom" title={tooltip} key={id}>
+              <div>
+                <IconButton
+                  component="button"
+                  disabled={disabled}
+                  sx={{ ml: 2, boxShadow: theme.shadows[3] }}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    window.open(link, "_blank", "noreferrer");
+                  }}
+                >
+                  <ProjectActionIcon icon={icon} />
+                </IconButton>
+              </div>
+            </AbstractTooltip>
+          ))}
+        </Grid>
+      </CardActions>
+    </>
   );
 };
 
