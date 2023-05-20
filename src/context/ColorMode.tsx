@@ -22,7 +22,7 @@ const ColorModeContext = createContext({ toggle: () => {} });
  */
 export default function ColorModeProvider({ children }: Props) {
   // State
-  const [mode, setMode] = useState<ColorMode>("light");
+  const [mode, setMode] = useState<ColorMode>("dark");
 
   // MUI Theme
   const theme = useMemo(

@@ -10,7 +10,7 @@ const Contact: React.FC<{}> = () => {
   return (
     <Page>
       <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
-        Recent Work
+        Contact
       </Typography>
       <ContactForm />
     </Page>
