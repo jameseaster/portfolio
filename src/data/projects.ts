@@ -1,35 +1,9 @@
-import scc from "../assets/screenshots/scc.png";
-import scc2 from "../assets/screenshots/scc2.png";
-import scc3 from "../assets/screenshots/scc3.png";
-import scc4 from "../assets/screenshots/scc4.png";
-import scc5 from "../assets/screenshots/scc5.png";
-import music from "../assets/screenshots/music.png";
-import music2 from "../assets/screenshots/music2.png";
-import music3 from "../assets/screenshots/music3.png";
-import music4 from "../assets/screenshots/music4.png";
-import workflow from "../assets/screenshots/workflow.png";
-import workflow2 from "../assets/screenshots/workflow2.png";
-import workflow3 from "../assets/screenshots/workflow3.png";
-import workflow4 from "../assets/screenshots/workflow4.png";
-import navportal from "../assets/screenshots/navportal.png";
-import navportal2 from "../assets/screenshots/navportal2.png";
-import navportal3 from "../assets/screenshots/navportal3.png";
-import navportal4 from "../assets/screenshots/navportal4.png";
-import sorting_viewer from "../assets/screenshots/sorting_viewer.png";
-import sorting_viewer2 from "../assets/screenshots/sorting_viewer2.png";
-import sorting_viewer3 from "../assets/screenshots/sorting_viewer3.png";
-import winterfest_mobile from "../assets/screenshots/winterfest_mobile.png";
-import winterfest_mobile2 from "../assets/screenshots/winterfest_mobile2.png";
-import mobile_app_manager from "../assets/screenshots/mobile_app_manager.png";
-import mobile_app_manager2 from "../assets/screenshots/mobile_app_manager2.png";
-import mobile_app_manager3 from "../assets/screenshots/mobile_app_manager3.png";
-import mobile_app_manager4 from "../assets/screenshots/mobile_app_manager4.png";
-import mobile_app_manager5 from "../assets/screenshots/mobile_app_manager5.png";
+import * as screenshots from "../assets/screenshots";
 
 export const projects = [
   {
     id: "navportal_project_card",
-    image: navportal,
+    image: screenshots.navportal,
     label: "NavPortal",
     short:
       "United States Army Corps of Engineers multi-platform waterway management application.",
@@ -40,22 +14,22 @@ export const projects = [
     gallery: [
       {
         id: "hAQh0367kveT",
-        image: navportal,
+        image: screenshots.navportal,
         label: "navportal_charts",
       },
       {
         id: "u57i5zi0zuJw",
-        image: navportal3,
+        image: screenshots.navportal3,
         label: "navportal_project_select",
       },
       {
         id: "UVJCuPjQd8vc",
-        image: navportal2,
+        image: screenshots.navportal2,
         label: "naportal_datatable",
       },
       {
         id: "uSlagCl0OonB",
-        image: navportal4,
+        image: screenshots.navportal4,
         label: "navportal_template",
       },
     ],
@@ -78,7 +52,7 @@ export const projects = [
   },
   {
     id: "secure_care_connect_card",
-    image: scc2,
+    image: screenshots.scc2,
     label: "Secure Care Connect",
     short:
       "Progressive web app that utilizes verifiable credentials to decentralize health care needs.",
@@ -89,27 +63,27 @@ export const projects = [
     gallery: [
       {
         id: "kDPXpvoaujM2",
-        image: scc2,
+        image: screenshots.scc2,
         label: "scc2",
       },
       {
         id: "9UsquSgClCBX",
-        image: scc,
+        image: screenshots.scc,
         label: "scc",
       },
       {
         id: "Hp0BMNcZwznU",
-        image: scc3,
+        image: screenshots.scc3,
         label: "scc3",
       },
       {
         id: "9hz8ivRZVauQ",
-        image: scc4,
+        image: screenshots.scc4,
         label: "scc4",
       },
       {
         id: "RlGu6xba3UgN",
-        image: scc5,
+        image: screenshots.scc5,
         label: "scc5",
       },
     ],
@@ -132,7 +106,7 @@ export const projects = [
   },
   {
     id: "winterfest_mobile_card",
-    image: winterfest_mobile,
+    image: screenshots.winterfestMobile,
     label: "Winterfest Mobile App",
     short:
       "Official conference mobile app that connects attendees through information & activities.",
@@ -143,13 +117,13 @@ export const projects = [
     gallery: [
       {
         id: "vB6MDAacdKeO",
-        image: winterfest_mobile2,
-        label: "winterfest_mobile2",
+        image: screenshots.winterfestMobile2,
+        label: "winterfestMobile2",
       },
       {
         id: "OfbTVr87ztnN",
-        image: winterfest_mobile,
-        label: "winterfest_mobile",
+        image: screenshots.winterfestMobile,
+        label: "winterfestMobile",
       },
     ],
     icons: [
@@ -178,7 +152,7 @@ export const projects = [
   },
   {
     id: "winterfest_mobile_manager_card",
-    image: mobile_app_manager,
+    image: screenshots.mobileAppManager,
     label: "Mobile App Content Manager",
     short:
       "Manages Winterfest mobile app by updating component content without redeploying code.",
@@ -189,28 +163,28 @@ export const projects = [
     gallery: [
       {
         id: "qtrJnmlyb9p3",
-        image: mobile_app_manager,
-        label: "mobile_app_manager",
+        image: screenshots.mobileAppManager,
+        label: "mobileAppManager",
       },
       {
         id: "jKSdClR2ymgb",
-        image: mobile_app_manager2,
-        label: "mobile_app_manager2",
+        image: screenshots.mobileAppManager2,
+        label: "mobileAppManager2",
       },
       {
         id: "XwJkNSlwKuC7",
-        image: mobile_app_manager3,
-        label: "mobile_app_manager3",
+        image: screenshots.mobileAppManager3,
+        label: "mobileAppManager3",
       },
       {
         id: "9sSEm2VRZvOC",
-        image: mobile_app_manager4,
-        label: "mobile_app_manager4",
+        image: screenshots.mobileAppManager4,
+        label: "mobileAppManager4",
       },
       {
         id: "mRSb6CZBXF1x",
-        image: mobile_app_manager5,
-        label: "mobile_app_manager5",
+        image: screenshots.mobileAppManager5,
+        label: "mobileAppManager5",
       },
     ],
     icons: [
@@ -232,7 +206,7 @@ export const projects = [
   },
   {
     id: "workflow_card",
-    image: workflow,
+    image: screenshots.workflow,
     label: "Workflow",
     short:
       "Internal platform for geospatial analyst team's management workflow and sprint insights.",
@@ -243,22 +217,22 @@ export const projects = [
     gallery: [
       {
         id: "KbPPIl24wcon",
-        image: workflow,
+        image: screenshots.workflow,
         label: "workflow",
       },
       {
         id: "Agjg5TtoFE6G",
-        image: workflow2,
+        image: screenshots.workflow2,
         label: "workflow2",
       },
       {
         id: "Y6PvuO5zqP9g",
-        image: workflow3,
+        image: screenshots.workflow3,
         label: "workflow3",
       },
       {
         id: "UAwcOixuJWpT",
-        image: workflow4,
+        image: screenshots.workflow4,
         label: "workflow4",
       },
     ],
@@ -281,7 +255,7 @@ export const projects = [
   },
   {
     id: "sorting_view_card",
-    image: sorting_viewer,
+    image: screenshots.sortingViewer,
     label: "Sorting Viewer",
     short:
       "Colorful depictions and brief descriptions of six different sorting algorithms.",
@@ -293,18 +267,18 @@ export const projects = [
     gallery: [
       {
         id: "78HAFs2RV54g",
-        image: sorting_viewer,
-        label: "sorting_viewer",
+        image: screenshots.sortingViewer,
+        label: "sortingViewer",
       },
       {
         id: "wclCV9vNQ2rb",
-        image: sorting_viewer2,
-        label: "sorting_viewer2",
+        image: screenshots.sortingViewer2,
+        label: "sortingViewer2",
       },
       {
         id: "eKHvJq9K7IEv",
-        image: sorting_viewer3,
-        label: "sorting_viewer3",
+        image: screenshots.sortingViewer3,
+        label: "sortingViewer3",
       },
     ],
     icons: [
@@ -326,8 +300,8 @@ export const projects = [
   },
   {
     id: "music_card",
-    image: music,
-    label: "Musician - Guitarist - Composer",
+    image: screenshots.music,
+    label: "Musician, Guitarist, Composer",
     short:
       "A website crafted to share audio recordings, videos, music notation, & photos of my music.",
     details: [
@@ -337,22 +311,22 @@ export const projects = [
     gallery: [
       {
         id: "bSQeVoSswFEv",
-        image: music,
+        image: screenshots.music,
         label: "music",
       },
       {
         id: "GTVef51NoC4l",
-        image: music2,
+        image: screenshots.music2,
         label: "music2",
       },
       {
         id: "agHCkBNgP2b5",
-        image: music3,
+        image: screenshots.music3,
         label: "music3",
       },
       {
         id: "H8NhTfA0Bh37",
-        image: music4,
+        image: screenshots.music4,
         label: "music4",
       },
     ],

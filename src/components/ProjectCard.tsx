@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import Collapse from "@mui/material/Collapse";
 import ProjectGallery from "./ProjectGallery";
-import { useTheme } from "@mui/material/styles";
 import ProjectCardInfo from "./ProjectCardInfo";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
@@ -46,9 +45,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   details,
   gallery,
 }) => {
-  // Styles
-  const theme = useTheme();
-
   // Local State
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
@@ -59,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <>
-      <Card sx={{ maxWidth: 370, boxShadow: theme.shadows[20] }}>
+      <Card elevation={20} sx={{ maxWidth: 370 }}>
         <CardActionArea
           disableRipple
           onClick={() => setOpen(true)}

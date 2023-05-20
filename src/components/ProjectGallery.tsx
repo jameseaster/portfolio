@@ -53,8 +53,8 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       <ImageList cols={1}>
         {gallery.map(({ id, image, label }) => (
           <ImageListItem
-            sx={{ borderRadius: "4px", m: 3, boxShadow: theme.shadows[12] }}
             key={id}
+            sx={{ borderRadius: "4px", m: 3, boxShadow: theme.shadows[12] }}
           >
             <img
               alt={label}

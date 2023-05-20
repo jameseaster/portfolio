@@ -1,10 +1,13 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Page from "../components/Page";
-import { useTheme } from "@mui/material";
+import { Card, CardContent, useTheme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import avatar from "../assets/avatar.png";
 import Typography from "@mui/material/Typography";
+import AbstractTooltip from "../components/AbstractTooltip";
+import IconButton from "@mui/material/IconButton";
+import { mediaIcons } from "../data/mediaIcons";
 
 /**
  * Info Page
@@ -14,37 +17,55 @@ const Info: React.FC<{}> = () => {
 
   return (
     <Page>
-      <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
-        Info
-      </Typography>
-      <Grid container justifyContent="center" sx={{ maxWidth: "500px" }}>
-        <Avatar
-          alt="James"
-          src={avatar}
-          sx={{
-            m: 2,
-            float: "left",
-            width: 150,
-            height: 150,
-            boxShadow: theme.shadows[24],
-          }}
-        />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in
-          purus venenatis ipsum pharetra dapibus ac ut nunc. Vestibulum suscipit
-          urna ac fermentum mattis.
-        </Typography>
-      </Grid>
-      <Grid sx={{ maxWidth: "500px" }}>
-        <Typography paragraph>
-          Nulla facilisi. Duis eleifend non augue eget dignissim. Nunc eget
-          sagittis ex. Donec nec rhoncus turpis. Nulla urna sapien, dignissim
-          vel congue convallis, efficitur eu orci. Maecenas luctus, quam nec
-          rutrum vestibulum, diam nunc hendrerit libero, sed rhoncus tellus
-          mauris non enim. Donec vitae ex nec dui tempus venenatis. Aenean
-          vulputate lacinia quam eget imperdiet.
-        </Typography>
-      </Grid>
+      <Card elevation={20}>
+        <CardContent sx={{ p: 4, maxWidth: "450px", textAlign: "center" }}>
+          <Grid container justifyContent="center">
+            <Avatar
+              alt="James"
+              src={avatar}
+              sx={{
+                m: 1,
+                width: 150,
+                height: 150,
+                boxShadow: theme.shadows[24],
+              }}
+            />
+            <Typography paragraph sx={{ mt: 3 }}>
+              Hi all, I'm James Easter, thanks for stopping by! I'm a software
+              engineer currently enjoying mobile and web development. I also
+              have a passion for music, coffee, & fly fishing and would love to
+              learn more about you.
+            </Typography>
+            <Typography paragraph sx={{ mt: 3 }}>
+              Feel free to peruse my recent work and send me a message. Cheers!
+            </Typography>
+          </Grid>
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            sx={{ mt: 2, pt: 1 }}
+          >
+            {mediaIcons.map(({ id, url, tooltip, style, img }) => (
+              <AbstractTooltip placement="bottom" title={tooltip} key={id}>
+                <div>
+                  <IconButton
+                    component="button"
+                    sx={{ p: 0, mx: 2, boxShadow: theme.shadows[3], ...style }}
+                    onClick={() => window.open(url, "_blank", "noreferrer")}
+                  >
+                    <Avatar
+                      src={img}
+                      alt={tooltip}
+                      sx={{ width: theme.spacing(4), height: theme.spacing(4) }}
+                    />
+                  </IconButton>
+                </div>
+              </AbstractTooltip>
+            ))}
+          </Grid>
+        </CardContent>
+      </Card>
     </Page>
   );
 };
