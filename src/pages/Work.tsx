@@ -16,10 +16,10 @@ const Work: React.FC<{}> = () => {
       </Typography>
       <Grid
         container
-        spacing={3}
+        spacing={2}
         alignItems="center"
         justifyContent="center"
-        sx={{ maxWidth: "1200px" }}
+        sx={{ maxWidth: "1200px", pb: 5 }}
       >
         {projects.map(({ ...props }) => (
           <Grid key={props.id} item>

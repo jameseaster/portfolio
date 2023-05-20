@@ -8,6 +8,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const RotateArrowIcon: React.FC<{ rotate: boolean }> = ({ rotate }) => {
   return (
     <KeyboardArrowDownIcon
+      fontSize="large"
       sx={{
         transition: "all ease-in-out 0.25s",
         transform: `rotate(${rotate ? 180 : 0}deg)`,

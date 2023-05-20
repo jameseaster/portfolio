@@ -3,7 +3,6 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import Collapse from "@mui/material/Collapse";
 import RotateArrowIcon from "./RotateArrowIcon";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
@@ -12,7 +11,6 @@ import CardContent from "@mui/material/CardContent";
 export interface ProjectCardContentProps {
   label: string;
   short: string;
-  details: string[];
   expanded: boolean;
   toggleDetails: () => void;
 }
@@ -23,7 +21,6 @@ export interface ProjectCardContentProps {
 const ProjectCardContent: React.FC<ProjectCardContentProps> = ({
   label,
   short,
-  details,
   expanded,
   toggleDetails,
 }) => {
@@ -49,19 +46,6 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({
           </Button>
         </Tooltip>
       </Grid>
-
-      {/* Details */}
-      <Collapse
-        in={expanded}
-        timeout="auto"
-        sx={{ mt: expanded ? 3 : 0, transition: "all ease-in-out 0.25s" }}
-      >
-        {details.map((text, index) => (
-          <Typography key={index} variant="body2" paragraph>
-            {text}
-          </Typography>
-        ))}
-      </Collapse>
     </CardContent>
   );
 };
@@ -69,7 +53,6 @@ const ProjectCardContent: React.FC<ProjectCardContentProps> = ({
 ProjectCardContent.defaultProps = {
   label: "Project Title here",
   short: `Here is a short description that shouldn't be longer than two lines / 85 characters.`,
-  details: ["Here is paragraph 1", "And here is paragraph 2"],
 };
 
 export default ProjectCardContent;
