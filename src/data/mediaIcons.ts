@@ -30,7 +30,7 @@ export const mediaIcons = [
   },
   {
     id: "codewars",
-    tooltip: "Codewars Profile",
+    tooltip: "Codewars",
     url: "https://www.codewars.com/users/jameseaster",
     icon: {
       light: codewars_white,
@@ -39,7 +39,7 @@ export const mediaIcons = [
   },
   {
     id: "medium",
-    tooltip: "Medium Articles",
+    tooltip: "Medium",
     url: "https://medium.com/@jameseaster.dev",
     icon: {
       light: medium_white,
