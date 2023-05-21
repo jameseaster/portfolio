@@ -153,7 +153,7 @@ export const projects = [
   {
     id: "winterfest_mobile_manager_card",
     image: screenshots.mobileAppManager,
-    label: "Mobile App Content Manager",
+    label: "Mobile App Manager",
     short:
       "Manages Winterfest mobile app by updating component content without redeploying code.",
     details: [
@@ -301,7 +301,7 @@ export const projects = [
   {
     id: "music_card",
     image: screenshots.music,
-    label: "Musician, Guitarist, Composer",
+    label: "Music",
     short:
       "A website crafted to share audio recordings, videos, music notation, & photos of my music.",
     details: [

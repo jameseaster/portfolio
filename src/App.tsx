@@ -4,6 +4,7 @@ import AnimatedRoutes from "./components/Routes";
 import CssBaseline from "@mui/material/CssBaseline";
 import ColorModeProvider from "./context/ColorMode";
 import { BrowserRouter as Router } from "react-router-dom";
+import { AnimationTrackerProvider } from "./context/AnimationTracker";
 
 /**
  * Top level app component
@@ -11,11 +12,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 export default function App() {
   return (
     <ColorModeProvider>
-      <CssBaseline />
-      <Router>
-        <Navigation />
-        <AnimatedRoutes />
-      </Router>
+      <AnimationTrackerProvider>
+        <CssBaseline />
+        <Router>
+          <Navigation />
+          <AnimatedRoutes />
+        </Router>
+      </AnimationTrackerProvider>
     </ColorModeProvider>
   );
 }

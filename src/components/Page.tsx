@@ -1,5 +1,6 @@
 // Imports
 import React from "react";
+import Path from "./Path";
 import Grid from "@mui/material/Grid";
 import { SxProps } from "@mui/system";
 import { motion } from "framer-motion";
@@ -33,6 +34,7 @@ const Page: React.FC<PageProps> = ({ sx, children }) => {
         flexDirection="column"
         sx={{ height: `${100 - HEADER_HEIGHT}vh`, m: 3, ...sx }}
       >
+        <Path />
         {children}
       </Grid>
     </motion.div>

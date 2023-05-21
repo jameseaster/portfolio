@@ -6,12 +6,12 @@ import Tabs from "@mui/material/Tabs";
 // Types
 export interface AbstractTabsProps {
   tabs: AbstractTab[];
-  panels: AbstractPanel[];
 }
 
 export interface AbstractTab {
   id: string;
   label: string;
+  panel: AbstractPanel;
 }
 
 export interface AbstractPanel {
@@ -22,7 +22,7 @@ export interface AbstractPanel {
 /**
  * Tooltip with title wrapped in Typography component with white font
  */
-const AbstractTabs: React.FC<AbstractTabsProps> = ({ tabs, panels }) => {
+const AbstractTabs: React.FC<AbstractTabsProps> = ({ tabs }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -32,18 +32,19 @@ const AbstractTabs: React.FC<AbstractTabsProps> = ({ tabs, panels }) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box>
-        <Tabs centered value={value} onChange={handleChange}>
+        <Tabs sx={{ mb: 2 }} centered value={value} onChange={handleChange}>
           {tabs.map((tab, idx) => (
             <Tab
               key={tab.id}
+              disableRipple
               label={tab.label}
-              sx={{ textTransform: "none" }}
+              sx={{ textTransform: "none", py: 0 }}
               {...a11yProps(idx)}
             />
           ))}
         </Tabs>
       </Box>
-      {panels.map((panel, idx) => (
+      {tabs.map(({ panel }, idx) => (
         <TabPanel key={panel.id} value={value} index={idx}>
           {panel.components}
         </TabPanel>
@@ -71,7 +72,18 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && (
+        <Box
+          sx={{
+            px: 3,
+            pb: 3,
+            overflow: "scroll",
+            height: { xs: "60vh", sm: "70vh", md: "80vh" },
+          }}
+        >
+          {children}
+        </Box>
+      )}
     </div>
   );
 }

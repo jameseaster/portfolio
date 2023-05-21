@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import Page from "../components/Page";
 import Card from "@mui/material/Card";
@@ -18,14 +18,6 @@ const Info: React.FC<{}> = () => {
   // Style
   const theme = useTheme();
 
-  // Local State
-  const [gray, setGray] = useState(1);
-
-  // Animate grayscale
-  useEffect(() => {
-    setGray(0);
-  }, []);
-
   return (
     <Page>
       <Card elevation={20}>
@@ -39,9 +31,7 @@ const Info: React.FC<{}> = () => {
                 width: 150,
                 height: 150,
                 mb: { md: 2, xs: 1 },
-                filter: `grayscale(${gray})`,
                 boxShadow: theme.shadows[24],
-                transition: "filter ease-in-out 1.25s",
               }}
             />
             <Typography paragraph sx={{ mt: 3 }}>
@@ -60,18 +50,22 @@ const Info: React.FC<{}> = () => {
             justifyContent="center"
             sx={{ mt: 2, pt: 1 }}
           >
-            {mediaIcons.map(({ id, url, tooltip, style, img }) => (
+            {mediaIcons.map(({ id, url, tooltip, style, icon }) => (
               <AbstractTooltip placement="bottom" title={tooltip} key={id}>
                 <div>
                   <IconButton
                     component="button"
-                    sx={{ p: 0, mx: 2, boxShadow: theme.shadows[3], ...style }}
+                    sx={{ p: 0, mx: 2, boxShadow: theme.shadows[5], ...style }}
                     onClick={() => window.open(url, "_blank", "noreferrer")}
                   >
-                    <Avatar
-                      src={img}
+                    <img
                       alt={tooltip}
-                      sx={{ width: theme.spacing(4), height: theme.spacing(4) }}
+                      src={icon[theme.palette.mode]}
+                      style={{
+                        width: theme.spacing(4),
+                        height: theme.spacing(4),
+                        transition: "all ease-in-out 0.25s",
+                      }}
                     />
                   </IconButton>
                 </div>

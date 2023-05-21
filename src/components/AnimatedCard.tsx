@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import { SxProps, useTheme } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
+import { useAnimationTracker } from "../context/AnimationTracker";
 
 // Types
 export interface AnimatedCardProps {
@@ -24,8 +25,13 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({
   // Style
   const theme = useTheme();
 
+  // Global State
+  const {
+    animationTracker: { home },
+  } = useAnimationTracker();
+
   // Local State
-  const [localElevation, setLocalElevation] = useState(0);
+  const [localElevation, setLocalElevation] = useState(home ? elevation : 0);
 
   // Update elevation
   useEffect(() => {

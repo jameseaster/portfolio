@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { ColorButton } from "./ColorButton";
 import { useNavigate } from "react-router-dom";
-import AbstractTooltip from "./AbstractTooltip";
 import IconButton from "@mui/material/IconButton";
 // Nav Icons
 import HomeIcon from "@mui/icons-material/HomeOutlined";
@@ -46,17 +45,15 @@ const Navigation: React.FC<NavigationProps> = () => {
       justifyContent="center"
       sx={{ mt: 2, height: `${HEADER_HEIGHT}vh` }}
     >
-      {links.map(({ Icon, route, tooltip }) => (
+      {links.map(({ Icon, route }) => (
         <Box key={route} sx={{ mr: 3 }}>
-          <AbstractTooltip title={tooltip} placement="bottom">
-            <IconButton
-              key={route}
-              color="inherit"
-              onClick={() => navigate(route)}
-            >
-              {Icon}
-            </IconButton>
-          </AbstractTooltip>
+          <IconButton
+            key={route}
+            color="inherit"
+            onClick={() => navigate(route)}
+          >
+            {Icon}
+          </IconButton>
         </Box>
       ))}
       <ColorButton />
