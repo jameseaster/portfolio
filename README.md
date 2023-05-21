@@ -13,8 +13,9 @@
 
 <div align="center">
 
-[![lastcommit][lastcommit-shield]][github-url]
-[![Codesize][codesize-shield]][github-url]
+[![Netlify Status][netlify-deploy-status]][netlify-shield]
+[![Last Commit][lastcommit-shield]][github-url]
+[![Code Size][codesize-shield]][github-url]
 [![Prettier][prettier-shield]][github-url]
 
 </div>
@@ -23,7 +24,7 @@
 
 [![Medium][medium-shield]][medium-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![CodeWars][codewars-shield]][codewars-url]
+[![Codewars][codewars-shield]][codewars-url]
 
 </div>
 
@@ -41,3 +42,5 @@
 [linkedin-url]: https://www.linkedin.com/in/jameseaster-dev/
 [prettier-shield]: https://img.shields.io/badge/code_style-prettier-brightgreen.svg?style=plastic
 [github-url]: https://github.com/jameseaster
+[netlify-shield]: https://app.netlify.com/sites/james-easter-development/deploys
+[netlify-deploy-status]: https://api.netlify.com/api/v1/badges/e6aab2b2-348f-4ed4-a829-02f9817354b9/deploy-status

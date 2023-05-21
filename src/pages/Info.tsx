@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Page from "../components/Page";
 import Card from "@mui/material/Card";
+import pdf from "../assets/resume.pdf";
 import { useTheme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import avatar from "../assets/avatar.png";
@@ -10,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import CardContent from "@mui/material/CardContent";
 import AbstractTooltip from "../components/AbstractTooltip";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 
 /**
  * Info Page
@@ -71,6 +73,25 @@ const Info: React.FC<{}> = () => {
                 </div>
               </AbstractTooltip>
             ))}
+            <AbstractTooltip placement="bottom" title="Resume">
+              <IconButton
+                component="button"
+                sx={{ p: 0, mx: 2, boxShadow: theme.shadows[5] }}
+                onClick={() => window.open(pdf, "_blank", "noreferrer")}
+              >
+                <ArticleOutlinedIcon
+                  sx={{
+                    width: theme.spacing(4),
+                    height: theme.spacing(4),
+                    padding: theme.spacing(0.5),
+                    borderRadius: theme.spacing(2),
+                    color: theme.palette.mode === "dark" ? "white" : "black",
+                    backgroundColor:
+                      theme.palette.mode === "dark" ? "black" : "white",
+                  }}
+                />
+              </IconButton>
+            </AbstractTooltip>
           </Grid>
         </CardContent>
       </Card>
