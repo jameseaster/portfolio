@@ -8,8 +8,16 @@ export const projects = [
     short:
       "United States Army Corps of Engineers multi-platform waterway management application.",
     details: [
-      `Features: Data filtering, insight visualizations, interactive map, data table, asynchronous analysis, project persistence, authentication`,
-      `Tech Stack: React, Esri, Elastic, MUI, Azure`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Data filtering, insight visualizations, interactive map, data table, asynchronous analysis, project persistence, authentication",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: ["React, Esri, Elastic, MUI, Azure"],
+      },
     ],
     gallery: [
       {
@@ -57,8 +65,16 @@ export const projects = [
     short:
       "Progressive web app that utilizes verifiable credentials to decentralize health care needs.",
     details: [
-      `Features: Instant message, verifiable profile, team onboarding, & decentralized control of medical profile`,
-      `Vue.js, Quasar, MongoDB, Express`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Instant message, verifiable profile, team onboarding, & decentralized control of medical profile",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: ["Vue.js, Quasar, MongoDB, Express"],
+      },
     ],
     gallery: [
       {
@@ -111,8 +127,16 @@ export const projects = [
     short:
       "Official conference mobile app that connects attendees through information & activities.",
     details: [
-      `Features: Live polls with realtime results, raffle drawings, news feed, & event schedule`,
-      `Tech Stack: React Native, Google Firebase`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Live polls with realtime results, raffle drawings, news feed, & event schedule",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: ["React Native, Google Firebase"],
+      },
     ],
     gallery: [
       {
@@ -157,8 +181,16 @@ export const projects = [
     short:
       "Manages Winterfest mobile app by updating component content without redeploying code.",
     details: [
-      `Features: Provides mobile app stats & insights and controls all raffles, news cards, schedule, and live polls.`,
-      `React, Firebase, MUI, Nivo Charts`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Provides mobile app stats & insights and controls all raffles, news cards, schedule, and live polls.",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: ["React, Firebase, MUI, Nivo Charts"],
+      },
     ],
     gallery: [
       {
@@ -211,8 +243,18 @@ export const projects = [
     short:
       "Internal platform for geospatial analyst team's management workflow and sprint insights.",
     details: [
-      `Features: Interactive map, customized kanban board, sprint cycle creations, & dashboard for team analytics`,
-      `React, Redux, Esri, React-Router, Express, MongoDB, Sass`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Interactive map, customized kanban board, sprint cycle creations, & dashboard for team analytics",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: [
+          "React, Redux, Esri, React-Router, Express, MongoDB, Sass",
+        ],
+      },
     ],
     gallery: [
       {
@@ -260,9 +302,17 @@ export const projects = [
     short:
       "Colorful depictions and brief descriptions of six different sorting algorithms.",
     details: [
-      `Features: Depicts six different sorting algorithms, and utilizes asynchronous code to visual their differences in efficiency and execution`,
-      `Use the info button to read about each algorithm and toggle the theme button for light and dark dark`,
-      `Vue.js, TypeScript, PrimeVue`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Depicts six different sorting algorithms, and utilizes asynchronous code to visual their differences in efficiency and execution",
+          "Use the info button to read about each algorithm and toggle the theme button for light and dark dark",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: ["Vue.js, TypeScript, PrimeVue"],
+      },
     ],
     gallery: [
       {
@@ -305,8 +355,18 @@ export const projects = [
     short:
       "A website crafted to share audio recordings, videos, music notation, & photos of my music.",
     details: [
-      `Features: Fully customized audio player, photo gallery, YouTube player with sheet music PDFs, and contact form`,
-      `TypeScript, React, React-Router, Ant-Design, Craco, Axios, Howler, EmailJS, Netlify`,
+      {
+        header: "Features:",
+        paragraphs: [
+          "Fully customized audio player, photo gallery, YouTube player with sheet music PDFs, and contact form",
+        ],
+      },
+      {
+        header: "Tech Stack:",
+        paragraphs: [
+          "TypeScript, React, React-Router, Ant-Design, Craco, Axios, Howler, EmailJS, Netlify",
+        ],
+      },
     ],
     gallery: [
       {

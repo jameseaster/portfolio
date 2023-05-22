@@ -15,7 +15,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 export interface ProjectGalleryProps {
   open: boolean;
   label: string;
-  details: string[];
+  details: Detail[];
   gallery: AppImage[];
   handleClose: () => void;
 }
@@ -24,6 +24,11 @@ interface AppImage {
   id: string;
   image: string;
   label: string;
+}
+
+interface Detail {
+  header: string;
+  paragraphs: string[];
 }
 
 /**
@@ -93,9 +98,16 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
               components: (
                 <Box sx={{ pt: 1, minHeight: "75vh" }}>
                   {details.map((text, idx) => (
-                    <Typography key={idx} paragraph>
-                      {text}
-                    </Typography>
+                    <div key={idx}>
+                      <Typography fontSize={18}>
+                        <strong>{text.header}</strong>
+                      </Typography>
+                      {text.paragraphs.map((text, idx) => (
+                        <Typography key={idx} paragraph>
+                          {text}
+                        </Typography>
+                      ))}
+                    </div>
                   ))}
                 </Box>
               ),

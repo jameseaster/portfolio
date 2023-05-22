@@ -12,7 +12,7 @@ export interface ProjectCardProps {
   label: string;
   image: string;
   short: string;
-  details: string[];
+  details: Detail[];
   gallery: AppImage[];
   icons?: CardActionIcon[];
 }
@@ -29,6 +29,11 @@ interface CardActionIcon {
   disabled: boolean;
   icon: string;
   tooltip: string;
+}
+
+interface Detail {
+  header: string;
+  paragraphs: string[];
 }
 
 /**
