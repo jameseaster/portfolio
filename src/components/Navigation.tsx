@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import { ColorButton } from "./ColorButton";
 import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
+import { APP_CONSTANTS } from "../utils/constants";
 // Nav Icons
 import HomeIcon from "@mui/icons-material/HomeOutlined";
 import InfoIcon from "@mui/icons-material/InfoOutlined";
@@ -14,12 +15,8 @@ import ContactIcon from "@mui/icons-material/MailOutlined";
 // Types
 export interface NavigationProps {}
 
-// TODO: ABSTRACT TO CONSTANTS FILE
-const HEADER_HEIGHT = 12;
-const NAV_ICON_SIZE = 40;
-
 // Constants
-const fontSize = NAV_ICON_SIZE;
+const fontSize = APP_CONSTANTS.NAV_ICON_SIZE;
 
 // App links & routes
 const links = [
@@ -43,10 +40,10 @@ const Navigation: React.FC<NavigationProps> = () => {
       container
       alignItems="center"
       justifyContent="center"
-      sx={{ mt: 2, height: `${HEADER_HEIGHT}vh` }}
+      sx={{ height: `${APP_CONSTANTS.HEADER_HEIGHT}vh` }}
     >
       {links.map(({ Icon, route }) => (
-        <Box key={route} sx={{ mr: 3 }}>
+        <Box key={route} sx={{ mr: { xs: 1, sm: 2, md: 3 } }}>
           <IconButton
             key={route}
             color="inherit"

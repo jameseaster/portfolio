@@ -4,6 +4,7 @@ import Path from "./Path";
 import Grid from "@mui/material/Grid";
 import { SxProps } from "@mui/system";
 import { motion } from "framer-motion";
+import { APP_CONSTANTS } from "../utils/constants";
 
 // Types
 export interface PageProps {
@@ -11,9 +12,6 @@ export interface PageProps {
   children?: React.ReactNode;
 }
 
-// Constants
-// TODO: ABSTRACT TO CONSTANTS FILE
-const HEADER_HEIGHT = 12;
 // Framer-Motion Animation Properties
 const PAGE_ANIMATIONS = {
   exit: { opacity: 0 },
@@ -32,7 +30,7 @@ const Page: React.FC<PageProps> = ({ sx, children }) => {
         display="flex"
         alignItems="center"
         flexDirection="column"
-        sx={{ height: `${100 - HEADER_HEIGHT}vh`, m: 3, ...sx }}
+        sx={{ height: `${100 - APP_CONSTANTS.HEADER_HEIGHT}vh`, m: 3, ...sx }}
       >
         <Path />
         {children}

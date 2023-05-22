@@ -1,13 +1,6 @@
-import Typography from "@mui/material/Typography";
 import { useLocation } from "react-router-dom";
-
-// Constants
-const pathNames: { [key: string]: string } = {
-  "/": "",
-  "/info": "About Me",
-  "/work": "My Work",
-  "/contact": "Message",
-};
+import Typography from "@mui/material/Typography";
+import { APP_CONSTANTS } from "../utils/constants";
 
 /**
  * Displays the page title by location pathname
@@ -18,7 +11,7 @@ const Path: React.FC<{}> = () => {
 
   return (
     <Typography sx={{ p: 0, mb: 3 }}>
-      <i>{pathNames[location.pathname]}</i>
+      <i>{APP_CONSTANTS.PATH_NAMES[location.pathname]}</i>
     </Typography>
   );
 };

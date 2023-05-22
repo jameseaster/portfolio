@@ -57,7 +57,12 @@ const Info: React.FC<{}> = () => {
                 <div>
                   <IconButton
                     component="button"
-                    sx={{ p: 0, mx: 2, boxShadow: theme.shadows[5], ...style }}
+                    sx={{
+                      p: 0,
+                      mx: { xs: 1, sm: 2 },
+                      boxShadow: theme.shadows[5],
+                      ...style,
+                    }}
                     onClick={() => window.open(url, "_blank", "noreferrer")}
                   >
                     <img
@@ -76,7 +81,7 @@ const Info: React.FC<{}> = () => {
             <AbstractTooltip placement="bottom" title="Resume">
               <IconButton
                 component="button"
-                sx={{ p: 0, mx: 2, boxShadow: theme.shadows[5] }}
+                sx={{ p: 0, mx: { xs: 1, sm: 2 }, boxShadow: theme.shadows[5] }}
                 onClick={() => window.open(pdf, "_blank", "noreferrer")}
               >
                 <ArticleOutlinedIcon
