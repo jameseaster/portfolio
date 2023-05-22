@@ -114,6 +114,7 @@ const ContactForm: React.FC<{}> = () => {
       />
       <TextField
         focused
+        type="email"
         label="Email"
         color="primary"
         error={!validated.email}
