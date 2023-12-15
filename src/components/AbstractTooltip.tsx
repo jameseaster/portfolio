@@ -20,6 +20,7 @@ export interface ProjectCardInfoProps {
     | "top-start"
     | "top"
     | undefined;
+  enterDelay?: number;
   children: React.ReactElement;
 }
 
@@ -30,12 +31,14 @@ const AbstractTooltip: React.FC<ProjectCardInfoProps> = ({
   title,
   children,
   placement,
+  enterDelay = 100,
   ...props
 }) => {
   return (
     <Tooltip
-      title={<Typography color={"white"}>{title}</Typography>}
       placement={placement}
+      enterDelay={enterDelay}
+      title={<Typography color={"white"}>{title}</Typography>}
       {...props}
     >
       {children}
