@@ -2,8 +2,10 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Page from "../components/Page";
 import Typography from "@mui/material/Typography";
+import { APP_CONSTANTS } from "../utils/constants";
 import AnimatedIcon from "../components/AnimatedIcon";
 import AnimatedCard from "../components/AnimatedCard";
+import AbstractTooltip from "../components/AbstractTooltip";
 
 /**
  * Home Page
@@ -16,7 +18,13 @@ const Home: React.FC<{}> = () => {
         <Box sx={{ height: { xs: "225px", sm: "300px" } }}>
           <AnimatedIcon />
         </Box>
-        <Typography sx={{ textAlign: "end" }}>Portfolio</Typography>
+        <AbstractTooltip
+          enterDelay={750}
+          placement="right"
+          title={APP_CONSTANTS.APP_VERSION}
+        >
+          <Typography sx={{ textAlign: "end" }}>Portfolio</Typography>
+        </AbstractTooltip>
       </AnimatedCard>
     </Page>
   );
