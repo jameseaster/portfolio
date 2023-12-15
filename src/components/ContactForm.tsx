@@ -49,7 +49,7 @@ const ContactForm: React.FC<{}> = () => {
       setLoading(true);
       try {
         // Send message to email
-        const url = process.env.REACT_APP_LAMBDA_SES || "";
+        const url = process.env.REACT_APP_EMAIL_FN || "";
         let result = await axios.post(url, contactForm);
         // Check for errors
         if (result.data.error) throw new Error(result.data.message);
