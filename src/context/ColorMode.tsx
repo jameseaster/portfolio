@@ -1,8 +1,9 @@
 /**
  * Imports
  */
-import React, { useMemo, useState, createContext, useContext } from "react";
+import React, { useMemo, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ColorModeContext } from "./colorModeContext";
 
 /**
  * Types
@@ -11,11 +12,6 @@ type ColorMode = "light" | "dark";
 type Props = {
   children?: React.ReactNode;
 };
-
-/**
- * Create color mode context
- */
-const ColorModeContext = createContext({ toggle: () => {} });
 
 /**
  * Provides color mode context to children
@@ -62,8 +58,3 @@ export default function ColorModeProvider({ children }: Props) {
     </ColorModeContext.Provider>
   );
 }
-
-/**
- * Hook that returns the Provider's value in a functional component
- */
-export const useColorMode = () => useContext(ColorModeContext);
