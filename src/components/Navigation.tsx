@@ -38,9 +38,11 @@ const Navigation: React.FC<NavigationProps> = () => {
   return (
     <Grid
       container
-      alignItems="center"
-      justifyContent="center"
-      sx={{ height: `${APP_CONSTANTS.HEADER_HEIGHT}vh` }}
+      sx={{
+        alignItems: "center",
+        justifyContent: "center",
+        height: `${APP_CONSTANTS.HEADER_HEIGHT}vh`,
+      }}
     >
       {links.map(({ Icon, route }) => (
         <Box key={route} sx={{ mr: { xs: 1, sm: 2, md: 3 } }}>

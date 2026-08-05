@@ -99,11 +99,11 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 <Box sx={{ pt: 1, minHeight: "75vh" }}>
                   {details.map((text, idx) => (
                     <div key={idx}>
-                      <Typography fontSize={18}>
+                      <Typography sx={{ fontSize: 18 }}>
                         <strong>{text.header}</strong>
                       </Typography>
                       {text.paragraphs.map((text, idx) => (
-                        <Typography key={idx} paragraph>
+                        <Typography key={idx} sx={{ mb: 2 }}>
                           {text}
                         </Typography>
                       ))}
