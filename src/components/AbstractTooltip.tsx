@@ -30,7 +30,7 @@ export interface ProjectCardInfoProps {
 const AbstractTooltip: React.FC<ProjectCardInfoProps> = ({
   title,
   children,
-  placement,
+  placement = "left",
   enterDelay = 100,
   ...props
 }) => {
@@ -47,7 +47,3 @@ const AbstractTooltip: React.FC<ProjectCardInfoProps> = ({
 };
 
 export default AbstractTooltip;
-
-AbstractTooltip.defaultProps = {
-  placement: "left",
-};
