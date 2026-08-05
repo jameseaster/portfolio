@@ -1,7 +1,7 @@
 import AbstractTooltip from "./AbstractTooltip";
 import { useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
-import { useColorMode } from "../context/ColorMode";
+import { useColorMode } from "../context/colorModeContext";
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import LightModeIcon from "@mui/icons-material/LightMode";
 

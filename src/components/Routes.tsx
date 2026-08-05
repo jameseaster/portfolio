@@ -8,7 +8,7 @@ import Contact from "../pages/Contact";
 import { ACTIONS } from "../utils/constants";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { useAnimationTracker } from "../context/AnimationTracker";
+import { useAnimationTracker } from "../context/animationTrackerContext";
 
 /**
  * AnimatedRoutes

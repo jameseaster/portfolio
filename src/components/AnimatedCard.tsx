@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import { SxProps, useTheme } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
-import { useAnimationTracker } from "../context/AnimationTracker";
+import { useAnimationTracker } from "../context/animationTrackerContext";
 
 // Types
 export interface AnimatedCardProps {

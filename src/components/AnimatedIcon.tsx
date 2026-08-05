@@ -1,7 +1,7 @@
 // Imports
 import React from "react";
 import { motion } from "framer-motion";
-import { useAnimationTracker } from "../context/AnimationTracker";
+import { useAnimationTracker } from "../context/animationTrackerContext";
 
 // Types
 export interface AnimatedIconProps {
