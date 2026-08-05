@@ -51,7 +51,7 @@ export const AnimationTrackerProvider: React.FC<{
 }> = ({ children }) => {
   const [animationTracker, dispatchAnimationTracker] = useReducer(
     reducer,
-    initialState
+    initialState,
   );
 
   return (

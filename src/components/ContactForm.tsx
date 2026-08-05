@@ -21,7 +21,7 @@ const initialSnack = { open: false, message: "", severity: undefined };
 /**
  * Contact Page
  */
-const ContactForm: React.FC<{}> = () => {
+const ContactForm: React.FC = () => {
   // Local State
   const [loading, setLoading] = useState(false);
   const [snack, setSnack] = useState<SnackProps>(initialSnack);
@@ -50,14 +50,14 @@ const ContactForm: React.FC<{}> = () => {
       try {
         // Send message to email
         const url = import.meta.env.REACT_APP_EMAIL_FN || "";
-        let result = await axios.post(url, contactForm);
+        const result = await axios.post(url, contactForm);
         // Check for errors
         if (result.data.error) throw new Error(result.data.message);
         // Create notification
         setSnack({ open: true, severity: "success", message: "Message sent!" });
         // Clear form data
         setContactForm(initialContactForm);
-      } catch (err: any) {
+      } catch (err) {
         // Log error
         console.error(err);
         setSnack({ open: true, severity: "error", message: "Failed to send" });
@@ -71,7 +71,7 @@ const ContactForm: React.FC<{}> = () => {
   // Close snack
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === "clickaway") return;
     setSnack((snack) => ({ ...snack, open: false }));

@@ -11,13 +11,13 @@ import { AnimationTrackerProvider } from "./context/AnimationTracker";
  */
 export function renderWithProviders(
   ui: React.ReactElement,
-  { route = "/" }: { route?: string } = {}
+  { route = "/" }: { route?: string } = {},
 ) {
   return render(
     <ColorModeProvider>
       <AnimationTrackerProvider>
         <MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>
       </AnimationTrackerProvider>
-    </ColorModeProvider>
+    </ColorModeProvider>,
   );
 }

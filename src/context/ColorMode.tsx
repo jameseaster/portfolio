@@ -43,7 +43,7 @@ export default function ColorModeProvider({ children }: Props) {
           },
         },
       }),
-    [mode]
+    [mode],
   );
 
   // Current color mode
@@ -53,7 +53,7 @@ export default function ColorModeProvider({ children }: Props) {
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
     }),
-    []
+    [],
   );
 
   return (

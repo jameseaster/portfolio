@@ -5,7 +5,7 @@ import { APP_CONSTANTS } from "../utils/constants";
 /**
  * Displays the page title by location pathname
  */
-const Path: React.FC<{}> = () => {
+const Path: React.FC = () => {
   // Hooks
   const location = useLocation();
 

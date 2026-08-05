@@ -16,7 +16,7 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 /**
  * Info Page
  */
-const Info: React.FC<{}> = () => {
+const Info: React.FC = () => {
   // Style
   const theme = useTheme();
 
