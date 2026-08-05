@@ -13,8 +13,7 @@ const letterVariants = (animate: boolean, duration = 4) => {
   const hidden = { opacity: 0 };
   const visible = {
     opacity: 1,
-    ease: "easeinout",
-    transition: { duration },
+    transition: { duration, ease: "easeInOut" as const },
   };
   return animate ? { hidden: visible, visible } : { hidden, visible };
 };
@@ -25,9 +24,8 @@ const edgeVariants = (animate: boolean, duration = 4) => {
     fill: "none",
     pathLength: 1,
     strokeWidth: 2,
-    ease: "easeinout",
     stroke: "currentColor",
-    transition: { duration },
+    transition: { duration, ease: "easeInOut" as const },
   };
   return animate ? { hidden: visible, visible } : { hidden, visible };
 };

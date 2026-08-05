@@ -17,7 +17,7 @@ const PAGE_ANIMATIONS = {
   exit: { opacity: 0 },
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { ease: "easeIn", duration: 0.25 },
+  transition: { ease: "easeIn" as const, duration: 0.25 },
 };
 
 /**
