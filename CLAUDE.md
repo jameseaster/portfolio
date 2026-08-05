@@ -4,18 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal portfolio site for jameseaster.dev - a Create React App (react-scripts) single-page app in TypeScript, deployed on Netlify. The contact form is backed by a Netlify serverless function that proxies to EmailJS.
+Personal portfolio site for jameseaster.dev - a Vite single-page app in React + TypeScript, deployed on Netlify. The contact form is backed by a Netlify serverless function that proxies to EmailJS.
 
 ## Commands
 
-- `npm start` - run the CRA dev server (frontend only; the contact function is not available)
+- `npm run dev` - run the Vite dev server (frontend only; the contact function is not available)
 - `npm run dev-functions` - run `netlify dev`, which serves the app *and* the `netlify/functions` handlers locally (needed to exercise the contact form end-to-end)
-- `npm run build` - production build to `build/`
-- `npm test` - run tests in watch mode (react-scripts/Jest + React Testing Library)
-- `npm test -- --watchAll=false src/path/to/File.test.tsx` - run a single test file once
-- `npm test -- -t "test name"` - run tests matching a name
+- `npm run build` - type-check (`tsc`) then production build to `dist/`
+- `npm run preview` - serve the built `dist/` locally
+- `npm run test` - run the Vitest smoke tests in watch mode
+- `npm run test:run` - run the tests once (CI mode); `npm run test:run -- src/App.test.tsx` runs a single file, `-t "name"` filters by name
 
-There is no separate lint or typecheck script; ESLint runs through react-scripts (config `react-app`, `react-app/jest`) during `start`/`build`. Code style is Prettier (default config).
+Type-checking is `tsc` (run as part of `build`); there is no separate ESLint script. Code style is Prettier (default config).
 
 ## Architecture
 
@@ -26,7 +26,7 @@ There is no separate lint or typecheck script; ESLint runs through react-scripts
 
 **Routing / animation** (`components/Routes.tsx`): routes (`/`, `/info`, `/work`, `/contact`, `/resume`) are wrapped in framer-motion's `<AnimatePresence mode="wait">`, keyed on `location.pathname`, to drive page transition animations. Each route renders a page from `src/pages/`.
 
-**Contact form flow**: `components/ContactForm.tsx` POSTs the form to `process.env.REACT_APP_EMAIL_FN` (the Netlify function URL). `netlify/functions/sendEmail.ts` validates the payload, then POSTs to EmailJS (`REACT_APP_EMAIL_URL`) using `REACT_APP_USER_ID`, `REACT_APP_SERVICE_ID`, `REACT_APP_TEMPLATE_ID`, `REACT_APP_ACCESS_TOKEN`. All of these are environment variables - the form silently no-ops to an empty URL if unset, so use `npm run dev-functions` with env vars configured to test it.
+**Contact form flow**: `components/ContactForm.tsx` POSTs the form to `import.meta.env.REACT_APP_EMAIL_FN` (the Netlify function URL). Vite's `envPrefix` is set to `REACT_APP_` in `vite.config.mts`, so the existing `REACT_APP_*` names are exposed to the frontend. `netlify/functions/sendEmail.ts` runs in Node and reads `process.env` directly: it validates the payload, then POSTs to EmailJS (`REACT_APP_EMAIL_URL`) using `REACT_APP_USER_ID`, `REACT_APP_SERVICE_ID`, `REACT_APP_TEMPLATE_ID`, `REACT_APP_ACCESS_TOKEN`. The form silently no-ops to an empty URL if unset, so use `npm run dev-functions` with env vars configured to test it.
 
 **Content as data**: project cards and galleries are defined declaratively in `src/data/projects.ts` (referencing images from `src/assets/screenshots/`, re-exported via `screenshots/index.ts`). To add/edit a portfolio project, edit that data file rather than the components. `src/data/mediaIcons.ts` holds social links.
 
