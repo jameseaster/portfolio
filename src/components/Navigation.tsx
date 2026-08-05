@@ -12,9 +12,6 @@ import InfoIcon from "@mui/icons-material/InfoOutlined";
 import WorkIcon from "@mui/icons-material/BuildOutlined";
 import ContactIcon from "@mui/icons-material/MailOutlined";
 
-// Types
-export interface NavigationProps {}
-
 // Constants
 const fontSize = APP_CONSTANTS.NAV_ICON_SIZE;
 
@@ -33,7 +30,7 @@ const links = [
 /**
  * Navigation Icons and Theme button
  */
-const Navigation: React.FC<NavigationProps> = () => {
+const Navigation: React.FC = () => {
   const navigate = useNavigate();
   return (
     <Grid

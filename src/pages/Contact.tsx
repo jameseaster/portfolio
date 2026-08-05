@@ -7,7 +7,7 @@ import ContactForm from "../components/ContactForm";
 /**
  * Contact Page
  */
-const Contact: React.FC<{}> = () => {
+const Contact: React.FC = () => {
   return (
     <Page>
       <Card

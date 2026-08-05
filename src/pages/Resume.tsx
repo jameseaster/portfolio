@@ -7,7 +7,7 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 /**
  * Resume Page
  */
-const Resume: React.FC<{}> = () => {
+const Resume: React.FC = () => {
   return (
     <Page>
       <Button

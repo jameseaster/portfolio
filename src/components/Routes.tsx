@@ -13,7 +13,7 @@ import { useAnimationTracker } from "../context/AnimationTracker";
 /**
  * AnimatedRoutes
  */
-const AnimatedRoutes: React.FC<{}> = () => {
+const AnimatedRoutes: React.FC = () => {
   // Global State
   const { animationTracker, dispatchAnimationTracker } = useAnimationTracker();
 

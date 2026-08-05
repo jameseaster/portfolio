@@ -37,7 +37,7 @@ exports.handler = async ({ httpMethod, body }) => {
     // Send email
     const response = await axios.post(url, emailData);
     return { statusCode: response.status };
-  } catch (err) {
+  } catch {
     return { statusCode: 500, message: "Failed to send email." };
   }
 };

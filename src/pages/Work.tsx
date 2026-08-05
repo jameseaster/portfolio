@@ -7,7 +7,7 @@ import ProjectCard from "../components/ProjectCard";
 /**
  * Work Page
  */
-const Work: React.FC<{}> = () => {
+const Work: React.FC = () => {
   return (
     <Page>
       <Grid
