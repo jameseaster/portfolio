@@ -27,10 +27,14 @@ const Page: React.FC<PageProps> = ({ sx, children }) => {
   return (
     <motion.div {...PAGE_ANIMATIONS}>
       <Grid
-        display="flex"
-        alignItems="center"
-        flexDirection="column"
-        sx={{ height: `${100 - APP_CONSTANTS.HEADER_HEIGHT}vh`, m: 3, ...sx }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          height: `${100 - APP_CONSTANTS.HEADER_HEIGHT}vh`,
+          m: 3,
+          ...sx,
+        }}
       >
         <Path />
         {children}

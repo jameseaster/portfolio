@@ -13,12 +13,15 @@ const Work: React.FC<{}> = () => {
       <Grid
         container
         spacing={3}
-        alignItems="center"
-        justifyContent="center"
-        sx={{ maxWidth: "1200px", pb: 5 }}
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          maxWidth: "1200px",
+          pb: 5,
+        }}
       >
         {projects.map(({ ...props }) => (
-          <Grid key={props.id} item>
+          <Grid key={props.id}>
             <ProjectCard {...props} />
           </Grid>
         ))}

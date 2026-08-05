@@ -24,7 +24,7 @@ const Info: React.FC<{}> = () => {
     <Page>
       <Card elevation={20}>
         <CardContent sx={{ p: 4, maxWidth: "450px", textAlign: "center" }}>
-          <Grid container justifyContent="center">
+          <Grid container sx={{ justifyContent: "center" }}>
             <Avatar
               alt="James"
               src={avatar}
@@ -36,21 +36,24 @@ const Info: React.FC<{}> = () => {
                 boxShadow: theme.shadows[24],
               }}
             />
-            <Typography paragraph sx={{ mt: 3 }}>
+            <Typography sx={{ mt: 3, mb: 2 }}>
               Hi all, I'm James Easter, thanks for stopping by! I'm a software
               engineer currently enjoying mobile and web development. I also
               have a passion for music, coffee, & fly fishing and would love to
               learn more about you.
             </Typography>
-            <Typography paragraph sx={{ mt: 3 }}>
+            <Typography sx={{ mt: 3, mb: 2 }}>
               Feel free to peruse my recent work and send me a message. Cheers!
             </Typography>
           </Grid>
           <Grid
             container
-            alignItems="center"
-            justifyContent="center"
-            sx={{ mt: 2, pt: 1 }}
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+              mt: 2,
+              pt: 1,
+            }}
           >
             {mediaIcons.map(({ id, url, tooltip, style, icon }) => (
               <AbstractTooltip placement="bottom" title={tooltip} key={id}>
