@@ -16,7 +16,11 @@ export function ColorButton() {
       title={`${theme.palette.mode === "dark" ? "Light" : "Dark"} Mode`}
       placement="bottom"
     >
-      <IconButton onClick={colorMode.toggle} color="inherit">
+      <IconButton
+        onClick={colorMode.toggle}
+        color="inherit"
+        aria-label="Toggle color mode"
+      >
         {theme.palette.mode === "dark" ? (
           <LightModeIcon fontSize="large" />
         ) : (
