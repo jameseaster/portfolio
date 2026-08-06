@@ -11,6 +11,7 @@ import HomeIcon from "@mui/icons-material/HomeOutlined";
 import InfoIcon from "@mui/icons-material/InfoOutlined";
 import WorkIcon from "@mui/icons-material/BuildOutlined";
 import ContactIcon from "@mui/icons-material/MailOutlined";
+import ResumeIcon from "@mui/icons-material/ArticleOutlined";
 
 // Constants
 const fontSize = APP_CONSTANTS.NAV_ICON_SIZE;
@@ -25,6 +26,11 @@ const links = [
     route: "/contact",
     tooltip: "Message",
   },
+  {
+    Icon: <ResumeIcon sx={{ fontSize }} />,
+    route: "/resume",
+    tooltip: "Resume",
+  },
 ];
 
 /**
@@ -38,6 +44,7 @@ const Navigation: React.FC = () => {
       sx={{
         alignItems: "center",
         justifyContent: "center",
+        position: "relative",
         height: `${APP_CONSTANTS.HEADER_HEIGHT}vh`,
       }}
     >
@@ -52,7 +59,18 @@ const Navigation: React.FC = () => {
           </IconButton>
         </Box>
       ))}
-      <ColorButton />
+      {/* Absolute so the icon row stays centered on the page, not offset by the switch */}
+      <Box
+        sx={{
+          top: "50%",
+          position: "absolute",
+          // px, not spacing units - MUI does not spacing-transform `right`
+          right: { xs: 8, sm: 16, md: 24 },
+          transform: "translateY(-50%)",
+        }}
+      >
+        <ColorButton />
+      </Box>
     </Grid>
   );
 };
