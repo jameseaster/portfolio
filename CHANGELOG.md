@@ -1,12 +1,20 @@
 ## Unreleased - 2.1.0
 
+### Added
+
+- A resume icon at the end of the navigation, linking to the /resume page, which
+  now embeds the resume PDF instead of only offering a button to open it.
+
 ### Changed
 
 - Enlarged the social icons on the info page from 32px to 40px.
+- Replaced the color mode icon button with a smaller switch pinned to the right
+  of the header, freeing the last navigation slot for the resume.
 
 ### Removed
 
 - The Codewars and Medium social links, along with their icon assets.
+- The resume icon on the info page, now that the navigation links to /resume.
 
 ## 2.0.0 - 2026-08-04
 
