@@ -1,3 +1,13 @@
+## Unreleased - 2.1.0
+
+### Changed
+
+- Enlarged the social icons on the info page from 32px to 40px.
+
+### Removed
+
+- The Codewars and Medium social links, along with their icon assets.
+
 ## 2.0.0 - 2026-08-04
 
 ### Changed
