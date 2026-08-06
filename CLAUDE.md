@@ -42,4 +42,24 @@ Type-checking is `tsc` (run as part of `build`); there is no separate ESLint scr
 
 ## Release
 
-Bump `version` in `package.json` (surfaced in-app via `APP_CONSTANTS.APP_VERSION`) and add a matching entry to `CHANGELOG.md` (Keep a Changelog style: Added / Fixed / Removed).
+Day-to-day changes only add notes to `CHANGELOG.md` under the top heading
+`## Unreleased - X.Y.Z` (Keep a Changelog style: Added / Changed / Fixed / Removed).
+Do not bump `package.json` per change - several unreleased PRs may land before a
+release, and together they decide the bump.
+
+The version in that heading is the release the queued notes currently add up to.
+Keep it accurate: if a change makes the pending release bigger than the heading
+claims (a fix queued as `2.0.1` followed by a feature), raise it - `2.1.0` here.
+A heading with a version but no date is unreleased; a date means it shipped.
+
+Releasing is a separate, deliberate step:
+
+1. Set `version` in `package.json` to the version in the heading (surfaced in-app
+   via `APP_CONSTANTS.APP_VERSION`).
+2. Rewrite the heading as `## X.Y.Z - YYYY-MM-DD` with the real release date, and
+   open a fresh `## Unreleased - <next>` above it.
+3. Push to `main` - Netlify deploys on push, so the push is the deploy.
+4. After the deploy succeeds, tag the shipped commit `X.Y.Z` and push the tag.
+
+See `RELEASING.md` in `winterfest-manager` for the fuller version of this process,
+including its `npm run bump` and `npm run release:tag` helper scripts.
