@@ -25,6 +25,7 @@ const APP_CONSTANTS: AppConstants = {
     "/info": "About Me",
     "/work": "My Work",
     "/contact": "Contact",
+    "/resume": "Resume",
   },
 };
 
