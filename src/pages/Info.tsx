@@ -72,8 +72,8 @@ const Info: React.FC = () => {
                       alt={tooltip}
                       src={icon[theme.palette.mode]}
                       style={{
-                        width: theme.spacing(4),
-                        height: theme.spacing(4),
+                        width: theme.spacing(5),
+                        height: theme.spacing(5),
                         transition: "all ease-in-out 0.25s",
                       }}
                     />
@@ -89,10 +89,10 @@ const Info: React.FC = () => {
               >
                 <ArticleOutlinedIcon
                   sx={{
-                    width: theme.spacing(4),
-                    height: theme.spacing(4),
+                    width: theme.spacing(5),
+                    height: theme.spacing(5),
                     padding: theme.spacing(0.5),
-                    borderRadius: theme.spacing(2),
+                    borderRadius: theme.spacing(2.5),
                     color: theme.palette.mode === "dark" ? "white" : "black",
                     backgroundColor:
                       theme.palette.mode === "dark" ? "black" : "white",
