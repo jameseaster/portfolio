@@ -3,7 +3,9 @@
 ### Added
 
 - A resume icon at the end of the navigation, linking to the /resume page, which
-  now embeds the resume PDF instead of only offering a button to open it.
+  now embeds the resume PDF instead of only offering a button to open it. The
+  browser's own PDF controls are suppressed in favour of a single download
+  action.
 
 ### Changed
 
