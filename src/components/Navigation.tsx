@@ -59,14 +59,19 @@ const Navigation: React.FC = () => {
           </IconButton>
         </Box>
       ))}
-      {/* Absolute so the icon row stays centered on the page, not offset by the switch */}
+      {/* Absolute so the icon row stays centered on the page, not offset by the
+          switch. Stretched top-to-bottom and flex-centered rather than nudged
+          with translateY: the switch is inline-flex, so a block wrapper would
+          add baseline descender space and leave it off the icons' center line. */}
       <Box
         sx={{
-          top: "50%",
+          top: 0,
+          bottom: 0,
+          display: "flex",
           position: "absolute",
+          alignItems: "center",
           // px, not spacing units - MUI does not spacing-transform `right`
           right: { xs: 8, sm: 16, md: 24 },
-          transform: "translateY(-50%)",
         }}
       >
         <ColorButton />
