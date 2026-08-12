@@ -10,8 +10,9 @@
 ### Changed
 
 - Enlarged the social icons on the info page from 32px to 40px.
-- Replaced the color mode icon button with a smaller switch pinned to the right
-  of the header, freeing the last navigation slot for the resume.
+- Moved the color mode toggle out of the navigation row to a smaller, subtler
+  sun/moon icon pinned to the right of the header, freeing the last navigation
+  slot for the resume.
 
 ### Removed
 
