@@ -6,6 +6,7 @@ import Link from "@mui/material/Link";
 import pdf from "../assets/resume.pdf";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
+import { APP_CONSTANTS } from "../utils/constants";
 import AbstractTooltip from "../components/AbstractTooltip";
 import DownloadIcon from "@mui/icons-material/FileDownloadOutlined";
 
@@ -29,7 +30,19 @@ const VIEWER_PARAMS = "#toolbar=0&navpanes=0&scrollbar=0&view=FitH";
 const Resume: React.FC = () => {
   const theme = useTheme();
   return (
-    <Page sx={{ m: 0, mx: "auto", px: 2, pb: 2, maxWidth: MAX_WIDTH }}>
+    <Page
+      sx={{
+        // m: 3 matches the other pages, so the title sits on the same line as
+        // theirs; mx/mb then centre the column and drop the bottom gap, and the
+        // height loses that top margin back so the PDF does not force a scroll.
+        m: 3,
+        mx: "auto",
+        mb: 0,
+        px: 3,
+        maxWidth: MAX_WIDTH,
+        height: `calc(${100 - APP_CONSTANTS.HEADER_HEIGHT}vh - ${theme.spacing(3)})`,
+      }}
+    >
       <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
         <AbstractTooltip title="Download" placement="left">
           <IconButton
