@@ -4,25 +4,46 @@ import Box from "@mui/material/Box";
 import Page from "../components/Page";
 import Link from "@mui/material/Link";
 import pdf from "../assets/resume.pdf";
+import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
+import AbstractTooltip from "../components/AbstractTooltip";
+import DownloadIcon from "@mui/icons-material/FileDownloadOutlined";
 
 // Constants
 const MAX_WIDTH = 900;
+const FILE_NAME = "James-Easter-Resume.pdf";
+
+// Chrome and Edge honour these to hide their PDF chrome, leaving just the page.
+// Firefox and Safari ignore them and show their own viewer, which is acceptable
+// - the resume still renders, it simply comes with their toolbar.
+const VIEWER_PARAMS = "#toolbar=0&navpanes=0&scrollbar=0&view=FitH";
 
 /**
  * Resume Page
  *
- * Embeds the resume PDF in the browser's native viewer. Some browsers - mobile
- * Safari in particular - refuse to render a PDF inline and show the fallback
- * link instead, so the fallback is a real download rather than filler text.
+ * Embeds the resume PDF with the browser's own viewer controls suppressed, so
+ * the page shows the resume and a single download action. Some browsers -
+ * mobile Safari in particular - refuse to render a PDF inline and show the
+ * fallback instead, so the fallback is a real download rather than filler text.
  */
 const Resume: React.FC = () => {
   const theme = useTheme();
   return (
     <Page sx={{ m: 0, mx: "auto", px: 2, pb: 2, maxWidth: MAX_WIDTH }}>
+      <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+        <AbstractTooltip title="Download" placement="left">
+          <IconButton
+            download={FILE_NAME}
+            href={pdf}
+            aria-label="Download resume"
+          >
+            <DownloadIcon />
+          </IconButton>
+        </AbstractTooltip>
+      </Box>
       <Box
         component="object"
-        data={pdf}
+        data={`${pdf}${VIEWER_PARAMS}`}
         type="application/pdf"
         aria-label="Resume"
         sx={{
@@ -37,7 +58,7 @@ const Resume: React.FC = () => {
           backgroundColor: theme.palette.background.paper,
         }}
       >
-        <Link href={pdf} target="_blank" rel="noreferrer">
+        <Link href={pdf} download={FILE_NAME}>
           Download resume
         </Link>
       </Box>
