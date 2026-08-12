@@ -4,8 +4,7 @@ import Navigation from "./Navigation";
 import AnimatedRoutes from "./Routes";
 import { renderWithProviders } from "../test-utils";
 
-// Navigation only renders links; pairing it with the routes lets a click be
-// asserted by the page it lands on.
+// Paired with the routes so a click can be asserted by the page it lands on
 const renderNav = () =>
   renderWithProviders(
     <>
@@ -17,8 +16,7 @@ const renderNav = () =>
 describe("Navigation", () => {
   it("renders one button per route, ending with the resume", () => {
     renderNav();
-    // Home, Info, Work, Contact, Resume. The color mode switch has the "switch"
-    // role rather than "button", so it is not counted here.
+    // The color mode switch has the "switch" role, so it is not counted
     expect(screen.getAllByRole("button")).toHaveLength(5);
   });
 
@@ -27,8 +25,7 @@ describe("Navigation", () => {
     renderNav();
     const icons = screen.getAllByRole("button");
     await user.click(icons[icons.length - 1]);
-    // findBy, not getBy: AnimatePresence mode="wait" holds the outgoing page
-    // until its exit animation finishes before mounting the new one.
+    // findBy, not getBy: AnimatePresence mode="wait" defers the incoming page
     expect(await screen.findByText(/download resume/i)).toBeInTheDocument();
   });
 

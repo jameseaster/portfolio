@@ -1,6 +1,7 @@
 // Imports
 import React from "react";
 import Path from "./Path";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { SxProps } from "@mui/system";
 import { motion } from "framer-motion";
@@ -9,6 +10,7 @@ import { APP_CONSTANTS } from "../utils/constants";
 // Types
 export interface PageProps {
   sx?: SxProps;
+  action?: React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -23,7 +25,7 @@ const PAGE_ANIMATIONS = {
 /**
  * Page
  */
-const Page: React.FC<PageProps> = ({ sx, children }) => {
+const Page: React.FC<PageProps> = ({ sx, action, children }) => {
   return (
     <motion.div {...PAGE_ANIMATIONS}>
       <Grid
@@ -36,7 +38,10 @@ const Page: React.FC<PageProps> = ({ sx, children }) => {
           ...sx,
         }}
       >
-        <Path />
+        <Box sx={{ mb: 3, display: "flex", alignItems: "center" }}>
+          <Path />
+          {action}
+        </Box>
         {children}
       </Grid>
     </motion.div>
