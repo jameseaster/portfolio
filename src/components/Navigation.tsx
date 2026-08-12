@@ -59,10 +59,7 @@ const Navigation: React.FC = () => {
           </IconButton>
         </Box>
       ))}
-      {/* Absolute so the icon row stays centered on the page, not offset by the
-          switch. Stretched top-to-bottom and flex-centered rather than nudged
-          with translateY: the switch is inline-flex, so a block wrapper would
-          add baseline descender space and leave it off the icons' center line. */}
+      {/* Absolute so the switch does not push the icon row off center */}
       <Box
         sx={{
           top: 0,

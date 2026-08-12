@@ -10,7 +10,7 @@ const Path: React.FC = () => {
   const location = useLocation();
 
   return (
-    <Typography sx={{ p: 0, mb: 3 }}>
+    <Typography sx={{ p: 0 }}>
       <i>{APP_CONSTANTS.PATH_NAMES[location.pathname]}</i>
     </Typography>
   );
