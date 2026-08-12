@@ -13,7 +13,7 @@ describe("App", () => {
   it("toggles the color mode without crashing", async () => {
     const user = userEvent.setup();
     render(<App />);
-    const toggle = screen.getByRole("switch", { name: /toggle color mode/i });
+    const toggle = screen.getByRole("button", { name: /toggle color mode/i });
     await user.click(toggle);
     // The app is still rendered after toggling the theme
     expect(screen.getByText("Development")).toBeInTheDocument();

@@ -14,25 +14,26 @@ const renderNav = () =>
   );
 
 describe("Navigation", () => {
-  it("renders one button per route, ending with the resume", () => {
+  it("renders a button per route ending with the resume, then the toggle", () => {
     renderNav();
-    // The color mode switch has the "switch" role, so it is not counted
-    expect(screen.getAllByRole("button")).toHaveLength(5);
+    const names = screen
+      .getAllByRole("button")
+      .map((button) => button.getAttribute("aria-label"));
+    expect(names).toEqual([
+      "Home",
+      "Info",
+      "Work",
+      "Message",
+      "Resume",
+      "Toggle color mode",
+    ]);
   });
 
-  it("navigates to the resume page from the last icon", async () => {
+  it("navigates to the resume page from the resume icon", async () => {
     const user = userEvent.setup();
     renderNav();
-    const icons = screen.getAllByRole("button");
-    await user.click(icons[icons.length - 1]);
+    await user.click(screen.getByRole("button", { name: "Resume" }));
     // findBy, not getBy: AnimatePresence mode="wait" defers the incoming page
     expect(await screen.findByText(/download resume/i)).toBeInTheDocument();
-  });
-
-  it("renders the color mode switch outside the icon row", () => {
-    renderNav();
-    expect(
-      screen.getByRole("switch", { name: /toggle color mode/i }),
-    ).toBeInTheDocument();
   });
 });

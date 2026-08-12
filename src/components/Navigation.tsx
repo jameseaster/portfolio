@@ -48,18 +48,19 @@ const Navigation: React.FC = () => {
         height: `${APP_CONSTANTS.HEADER_HEIGHT}vh`,
       }}
     >
-      {links.map(({ Icon, route }) => (
+      {links.map(({ Icon, route, tooltip }) => (
         <Box key={route} sx={{ mr: { xs: 1, sm: 2, md: 3 } }}>
           <IconButton
             key={route}
             color="inherit"
+            aria-label={tooltip}
             onClick={() => navigate(route)}
           >
             {Icon}
           </IconButton>
         </Box>
       ))}
-      {/* Absolute so the switch does not push the icon row off center */}
+      {/* Absolute so the toggle does not push the icon row off center */}
       <Box
         sx={{
           top: 0,
