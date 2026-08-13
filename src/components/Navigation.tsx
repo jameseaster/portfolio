@@ -2,7 +2,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { ColorButton } from "./ColorButton";
 import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import { APP_CONSTANTS } from "../utils/constants";
@@ -44,7 +43,6 @@ const Navigation: React.FC = () => {
       sx={{
         alignItems: "center",
         justifyContent: "center",
-        position: "relative",
         height: `${APP_CONSTANTS.HEADER_HEIGHT}vh`,
       }}
     >
@@ -60,20 +58,6 @@ const Navigation: React.FC = () => {
           </IconButton>
         </Box>
       ))}
-      {/* Absolute so the toggle does not push the icon row off center */}
-      <Box
-        sx={{
-          top: 0,
-          bottom: 0,
-          display: "flex",
-          position: "absolute",
-          alignItems: "center",
-          // px, not spacing units - MUI does not spacing-transform `right`
-          right: { xs: 8, sm: 16, md: 24 },
-        }}
-      >
-        <ColorButton />
-      </Box>
     </Grid>
   );
 };

@@ -1,6 +1,7 @@
 // Imports
 import Navigation from "./components/Navigation";
 import AnimatedRoutes from "./components/Routes";
+import { ColorButton } from "./components/ColorButton";
 import CssBaseline from "@mui/material/CssBaseline";
 import ColorModeProvider from "./context/ColorMode";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -18,6 +19,7 @@ export default function App() {
           <Navigation />
           <AnimatedRoutes />
         </Router>
+        <ColorButton />
       </AnimationTrackerProvider>
     </ColorModeProvider>
   );

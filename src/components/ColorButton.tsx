@@ -10,7 +10,7 @@ import LightModeIcon from "@mui/icons-material/LightModeOutlined";
 const ICON_SIZE = 22;
 
 /**
- * Icon Button to toggle between light and dark theme
+ * Floating icon button to toggle between light and dark theme
  */
 export function ColorButton() {
   const theme = useTheme();
@@ -27,6 +27,11 @@ export function ColorButton() {
         aria-label="Toggle color mode"
         sx={{
           opacity: 0.5,
+          zIndex: "appBar",
+          position: "fixed",
+          // px, not spacing units - MUI does not transform these
+          bottom: { xs: 8, sm: 16 },
+          right: { xs: 8, sm: 16 },
           transition: "opacity ease-in-out 0.25s",
           "&:hover": { opacity: 1 },
         }}
