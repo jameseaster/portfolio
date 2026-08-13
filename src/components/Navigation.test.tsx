@@ -14,19 +14,12 @@ const renderNav = () =>
   );
 
 describe("Navigation", () => {
-  it("renders a button per route ending with the resume, then the toggle", () => {
+  it("renders a button per route, ending with the resume", () => {
     renderNav();
     const names = screen
       .getAllByRole("button")
       .map((button) => button.getAttribute("aria-label"));
-    expect(names).toEqual([
-      "Home",
-      "Info",
-      "Work",
-      "Message",
-      "Resume",
-      "Toggle color mode",
-    ]);
+    expect(names).toEqual(["Home", "Info", "Work", "Message", "Resume"]);
   });
 
   it("navigates to the resume page from the resume icon", async () => {
