@@ -7,6 +7,12 @@
   browser's own PDF controls are suppressed in favour of a single download
   action.
 
+### Fixed
+
+- The home page card now sits the same distance below the navigation as every
+  other page, instead of being pushed down by a percentage margin that grew with
+  the viewport width.
+
 ### Changed
 
 - Enlarged the social icons on the info page from 32px to 40px.
