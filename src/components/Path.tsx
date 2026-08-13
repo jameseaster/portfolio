@@ -9,8 +9,9 @@ const Path: React.FC = () => {
   // Hooks
   const location = useLocation();
 
+  // minHeight reserves the line on routes with no title
   return (
-    <Typography sx={{ p: 0 }}>
+    <Typography sx={{ p: 0, minHeight: "1.5em" }}>
       <i>{APP_CONSTANTS.PATH_NAMES[location.pathname]}</i>
     </Typography>
   );

@@ -12,7 +12,7 @@ import AbstractTooltip from "../components/AbstractTooltip";
  */
 const Home: React.FC = () => {
   return (
-    <Page sx={{ marginTop: { xs: "20%", sm: "13%", md: "9%", lg: "5%" } }}>
+    <Page>
       <AnimatedCard sx={{ px: 3 }}>
         <Typography>Development</Typography>
         <Box sx={{ height: { xs: "225px", sm: "300px" } }}>
