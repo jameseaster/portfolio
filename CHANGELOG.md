@@ -6,12 +6,8 @@
   now embeds the resume PDF instead of only offering a button to open it. The
   browser's own PDF controls are suppressed in favour of a single download
   action.
-
-### Fixed
-
-- The home page card now sits the same distance below the navigation as every
-  other page, instead of being pushed down by a percentage margin that grew with
-  the viewport width.
+- Accessible labels on the navigation icons, which screen readers previously
+  announced as unlabelled buttons.
 
 ### Changed
 
@@ -24,6 +20,12 @@
 
 - The Codewars and Medium social links, along with their icon assets.
 - The resume icon on the info page, now that the navigation links to /resume.
+
+### Fixed
+
+- The home page card now sits the same distance below the navigation as every
+  other page, instead of being pushed down by a percentage margin that grew with
+  the viewport width.
 
 ## 2.0.0 - 2026-08-04
 
