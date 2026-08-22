@@ -70,6 +70,10 @@
   at the same time as Digital Bazaar, showing two concurrent full-time roles.
 - The malformed `<meta name="James Easter">` tag in `index.html`, which set the
   page description under a `name` of "James Easter" rather than `description`.
+- Resume entries no longer jump whole to the next page. They were set
+  `break-inside: avoid` back when each was a line or two; once they carried real
+  content, a tall entry left roughly three inches blank at the foot of a page.
+  Entry heads now stay with the body that follows them instead.
 
 ## 2.1.0 - 2026-08-13
 

@@ -101,7 +101,15 @@ body {
 }
 
 /* --- Entries --- */
-.resume-entry {
+/* Entries are now taller than a page's remaining space, so keep heads with
+   their bodies rather than keeping whole entries together. */
+.resume-entry-head,
+.resume-entry-subtitle,
+.resume-entry-summary {
+  break-after: avoid;
+}
+
+.resume-project {
   break-inside: avoid;
 }
 
