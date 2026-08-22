@@ -1,0 +1,219 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "James Easter",
+    "label": "Software Engineer",
+    "email": "james.m.easter@gmail.com",
+    "url": "https://jameseaster.dev",
+    "summary": "Full stack engineer who leads front-end architecture on systems people depend on: drone flight operations for the US Army Corps of Engineers, and W3C Verifiable Credential platforms behind California DMV, CalOES, and DHS pilots. Comfortable migrating state layers, building test suites, and shipping mobile apps.",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "jameseaster-dev",
+        "url": "https://www.linkedin.com/in/jameseaster-dev/"
+      },
+      {
+        "network": "GitHub",
+        "username": "jameseaster",
+        "url": "https://github.com/jameseaster"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Digital Bazaar",
+      "position": "Software Engineer",
+      "location": "Remote",
+      "url": "https://digitalbazaar.com",
+      "startDate": "2023-10",
+      "summary": "Full stack development on W3C Verifiable Credential platforms for government and enterprise pilots.",
+      "highlights": [
+        "Built the issuance and verification coordinator APIs behind California DMV, CalOES, and DHS first responder credential pilots, one codebase serving several government deployments.",
+        "Registered CBOR-LD entry 31000001 for California DMV Disabled Person Parking Placards, and contributed to the W3C CBOR-LD and Verifiable Credentials specifications.",
+        "Shipped barcode and QR capture across wallet and verifier apps, moving to the Barcode Detection API and retiring a paid third-party scanner dependency."
+      ]
+    },
+    {
+      "name": "Woolpert",
+      "position": "Application Developer III",
+      "location": "Remote",
+      "url": "https://woolpert.com",
+      "startDate": "2022-09",
+      "endDate": "2023-10",
+      "summary": "Lead front-end developer focused on application structure, aesthetics, and performance.",
+      "highlights": [
+        "Maintained and extended a large reusable Material-UI component library shared across the team's GIS applications."
+      ]
+    },
+    {
+      "name": "Leverstack LLC (formerly James M Easter LLC)",
+      "position": "Owner & Engineer",
+      "location": "Remote",
+      "url": "https://leverstack.io",
+      "startDate": "2022-01",
+      "summary": "Full stack web and mobile applications delivered under contract, from discovery through production.",
+      "highlights": [
+        "Built Badge Birdie, a workplace occupancy analytics product: CSV ingestion with column mapping, charting and filtering, and Stripe subscriptions across staged environments.",
+        "Delivered Secure Care Connect, a verifiable credential health care application, end to end with weekly client presentations through production release."
+      ]
+    },
+    {
+      "name": "Optimal GEO",
+      "position": "Software Engineer",
+      "location": "Remote",
+      "startDate": "2020-08",
+      "endDate": "2022-09",
+      "summary": "Front-end lead React developer and presenter for company contracts.",
+      "highlights": [
+        "Sole front-end developer on a hydrographic survey production system for USACE: lidar block tracking, sprint planning, QC scoring, and map-driven status workflows."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "OPTIC",
+      "entity": "Leverstack LLC (formerly James M Easter LLC)",
+      "type": "application",
+      "description": "Drone flight operations platform for the US Army Corps of Engineers.",
+      "startDate": "2025-09",
+      "highlights": [
+        "Led the migration of thirteen React contexts onto Redux Toolkit slices across a 75,000-line codebase, then paginated missions and fixed a selector memo causing a render loop.",
+        "Grew the test suite from nothing to 942 tests and drove a type-safety migration to zero any casts and zero suppressions, with typecheck enforced in CI.",
+        "Designed the error-handling contract now shared by the data, Redux, and component layers, and shipped mission planning, hazard risk assessment, and approval signature chains."
+      ],
+      "keywords": ["React", "Redux Toolkit", "TypeScript", "ArcGIS", "GIS"]
+    },
+    {
+      "name": "Veres Admin Interface",
+      "entity": "Digital Bazaar",
+      "type": "application",
+      "description": "Administrative console for the Veres verifiable credential platform.",
+      "startDate": "2025-10",
+      "highlights": [
+        "Sole author across 451 of 462 commits, from first commit to production: organizations, issuer and status instances, verification workflows, refresh policies, and zcaps.",
+        "Wrote the client library the console is built on, plus the Terraform that deploys it."
+      ],
+      "keywords": ["Vue", "JavaScript", "Terraform", "Verifiable Credentials"]
+    },
+    {
+      "name": "Veres Wallet",
+      "entity": "Digital Bazaar",
+      "type": "application",
+      "description": "W3C Verifiable Credential wallet.",
+      "startDate": "2023-10",
+      "highlights": [
+        "Shipped credential detail views, QR capture, NFC transfer, and dynamic display driven by each credential's own renderMethod SVG templates.",
+        "Led a UI redesign of the dashboard, login, and registration, and migrated components to the Vue Composition API."
+      ],
+      "keywords": ["Vue", "Quasar", "Verifiable Credentials", "JavaScript"]
+    },
+    {
+      "name": "VC Playground",
+      "entity": "Digital Bazaar",
+      "type": "application",
+      "url": "https://vcplayground.org/",
+      "description": "Public platform for issuing and verifying example verifiable credentials.",
+      "startDate": "2023-10",
+      "highlights": [
+        "Maintain the credentials, queries, and JSON-LD contexts behind it, including selective disclosure and multi-protocol QR issuance over VC API and OID4VCI."
+      ],
+      "keywords": ["Verifiable Credentials", "JSON-LD", "Vue"]
+    },
+    {
+      "name": "NavPortal",
+      "entity": "Woolpert",
+      "type": "application",
+      "description": "Hydrographic data platform for the US Army Corps of Engineers.",
+      "startDate": "2021-06",
+      "endDate": "2023-10",
+      "highlights": [
+        "Combined React, ArcGIS, Koop, and Elasticsearch to render and filter hydrographic survey data with dynamic visualizations, search, and custom map widgets."
+      ],
+      "keywords": ["React", "ArcGIS", "Elasticsearch", "Material-UI", "GIS"]
+    },
+    {
+      "name": "Winterfest",
+      "entity": "Leverstack LLC (formerly James M Easter LLC)",
+      "type": "application",
+      "description": "Interactive iOS and Android conference app with live polling, schedules, news, and raffles.",
+      "startDate": "2022-10",
+      "highlights": [
+        "Sole developer through six major versions, serving 7,401 attendees who cast 8,802 live poll votes and claimed 18,858 raffle entries across events in two states.",
+        "Run three environments from one codebase, local Firebase emulators through staging to production, selected by native build target and covered by integration tests in CI."
+      ],
+      "keywords": ["React Native", "TypeScript", "Firebase"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Operation Spark",
+      "area": "Full Stack Development",
+      "studyType": "Certificate",
+      "startDate": "2019-12",
+      "endDate": "2020-05"
+    },
+    {
+      "institution": "University of New Orleans",
+      "studyType": "Master of Music",
+      "startDate": "2014-08",
+      "endDate": "2016-12"
+    },
+    {
+      "institution": "Harding University",
+      "studyType": "Bachelor of Arts",
+      "startDate": "2008-08",
+      "endDate": "2012-08"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": ["JavaScript", "TypeScript", "Python"]
+    },
+    {
+      "name": "Front-end",
+      "keywords": [
+        "React",
+        "React Native",
+        "Vue",
+        "Redux Toolkit",
+        "Material-UI"
+      ]
+    },
+    {
+      "name": "Back-end & Data",
+      "keywords": ["Node.js", "Elasticsearch", "ArcGIS", "JSON-LD"]
+    },
+    {
+      "name": "Platform & Tooling",
+      "keywords": ["Firebase", "Terraform", "Docker", "Vitest", "CI/CD"]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Elastic Excellence Award",
+      "date": "2021",
+      "awarder": "Elastic",
+      "summary": "Awarded for work on NavPortal."
+    }
+  ],
+  "interests": [
+    {
+      "name": "Husband & Dad"
+    },
+    {
+      "name": "Coffee roasting"
+    },
+    {
+      "name": "Fly fishing"
+    },
+    {
+      "name": "Guitar"
+    }
+  ],
+  "meta": {
+    "canonical": "https://jameseaster.dev/resume.json",
+    "version": "1.1.0",
+    "lastModified": "2026-08-22"
+  }
+}

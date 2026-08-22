@@ -1,4 +1,93 @@
-## Unreleased - 2.1.1
+## Unreleased - 2.2.0
+
+### Added
+
+- A resume page built from structured data. `src/data/resume.json` follows the
+  JSON Resume schema and is the single source of truth for the resume, replacing
+  the embedded PDF that rendered inconsistently outside Chrome and was unusable
+  on mobile.
+- schema.org `Person` JSON-LD, generated from that data and injected into
+  `index.html` at build time so crawlers that do not execute JavaScript still
+  see it.
+- Print styles on the resume page, so printing yields the resume rather than the
+  surrounding navigation and controls.
+- `npm run resume:pdf`, which renders the `/resume/print` route to
+  `public/James-Easter-Resume.pdf` with headless Chrome. The PDF is the same DOM
+  the site renders, keeps a selectable text layer, and is tagged for screen
+  readers and parsers. The command reports the page count and fails past the
+  page budget.
+- The resume data published at `/resume.json`, following the JSON Resume
+  convention, so the resume is consumable by tooling and not only by eye.
+- Role variants for the resume. `npm run resume:pdf -- --variant=frontend`
+  narrows it to the work worth showing for a kind of role and writes the PDFs to
+  `variant-resumes/`, which git ignores - a variant is generated for a particular
+  application rather than published. Tags live in
+  `src/data/resume-variants.json`, so the published `/resume.json` stays exactly
+  JSON Resume. Untagged entries are core and appear in every variant; the
+  page-count check covers each variant, so none can quietly overflow.
+- A "Selected Projects" section, which catches client work whose employer a
+  variant filtered out, so filtering an employer never silently discards the work
+  done for it.
+- Three years of work reconstructed from commit history and added to the resume:
+  the OPTIC drone flight operations platform for the US Army Corps of Engineers,
+  the Veres Admin Interface, Badge Birdie, and a hydrographic survey production
+  system, alongside the California DMV, CalOES, and DHS credential pilots and a
+  registered CBOR-LD entry. The resume had one quantified claim; it now carries
+  named clients, public products, and measured numbers.
+- Real Winterfest usage on the resume: 7,401 attendees, 8,802 live poll votes,
+  and 18,858 raffle claims, taken from the production dashboard. This replaces
+  "thousands of results within seconds", which overstated it - the largest single
+  poll drew about a thousand votes, and nothing measured the latency.
+- `npm run resume:verify`, which re-renders the resume artifacts and fails if
+  they differ from the committed ones. It runs in CI after the build, so the
+  PDFs cannot drift away from `src/data/resume.json` unnoticed - Netlify deploys
+  what is in the repo, not what the data says.
+- An ATS variant of the resume at `public/James-Easter-Resume-ATS.pdf`, rendered
+  from the same data by `npm run resume:pdf`. It is single column with plain
+  headings, no rules, and dates as text, so applicant tracking systems read it in
+  the right order. Letter-spaced headings extracted as "E D U C AT I O N" and
+  right-aligned dates were dropped to the end of the document, so both are gone
+  from this variant.
+
+### Changed
+
+- The resume page renders React components instead of embedding a PDF in an
+  `<object>` element.
+- `vite.config.mts` is type-checked by the root `tsconfig.json`; the separate
+  `tsconfig.node.json` project reference is gone.
+- The resume download serves a stable `/James-Easter-Resume.pdf` rather than a
+  content-hashed bundled asset, so the URL can be pasted into an application.
+- The resume download button opens a menu offering the styled PDF or the ATS
+  version, rather than downloading the styled PDF directly.
+- Resume skills gained a Platform & Tooling group, and Redux Toolkit and Firebase
+  joined the front-end and data groups, matching what the work actually uses.
+- The Winterfest and Secure Care Connect entries were reshaped: Winterfest keeps
+  its own project entry, and Secure Care Connect moves to a Leverstack highlight.
+
+### Removed
+
+- `src/assets/resume.pdf`, the hand-made May 2023 PDF the page used to embed.
+
+### Fixed
+
+- Secure Care Connect and the Winterfest mobile app now appear on the resume.
+  They were attributed to `Leverstack LLC` while the employer is listed as
+  `Leverstack LLC (formerly James M Easter LLC)`, and the exact-match grouping
+  dropped both without a word - taking the resume's only quantified claim with
+  them. The test that was meant to catch this compared with `startsWith`, so it
+  passed; it now matches exactly, the way the renderer does.
+- Section headings and the job title in the styled PDF now survive text
+  extraction. Their tracking was wide enough that copying "EDUCATION" out of the
+  PDF yielded "E D U C AT I O N", which also meant search engines indexed the
+  heading as nine separate letters.
+- Woolpert now ends in October 2023 on the resume. It previously read "Present"
+  at the same time as Digital Bazaar, showing two concurrent full-time roles.
+- The malformed `<meta name="James Easter">` tag in `index.html`, which set the
+  page description under a `name` of "James Easter" rather than `description`.
+- Resume entries no longer jump whole to the next page. They were set
+  `break-inside: avoid` back when each was a line or two; once they carried real
+  content, a tall entry left roughly three inches blank at the foot of a page.
+  Entry heads now stay with the body that follows them instead.
 
 ## 2.1.0 - 2026-08-13
 

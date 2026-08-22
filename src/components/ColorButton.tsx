@@ -23,6 +23,7 @@ export function ColorButton() {
     >
       <IconButton
         color="inherit"
+        data-print="hide"
         onClick={colorMode.toggle}
         aria-label="Toggle color mode"
         sx={{

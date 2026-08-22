@@ -12,6 +12,9 @@
 /build
 /dist
 
+# resume variants, generated on demand for a particular application
+/variant-resumes
+
 # misc
 .DS_Store
 .env.local

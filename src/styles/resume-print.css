@@ -1,0 +1,222 @@
+/* Print styling for /resume/print. Ported from the standalone resume repo's
+   theme and matched to the light-mode web rendering, so the PDF is the page. */
+
+:root {
+  --ink: #1f2933;
+  --muted: #6b7280;
+  --rule: #d8dcdf;
+}
+
+@page {
+  size: Letter;
+  margin: 0.55in 0.65in;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.36;
+}
+
+.resume-page {
+  display: block;
+}
+
+.resume * {
+  box-sizing: border-box;
+}
+
+.resume a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Header --- */
+.resume-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid var(--rule);
+}
+
+.resume-name {
+  margin: 0;
+  font-size: 21pt;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.resume-label {
+  margin: 0.1rem 0 0;
+  font-size: 9pt;
+  font-weight: 500;
+  /* See the tracking note on .resume-section-title */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.resume-contact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+  font-size: 8.4pt;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* --- Sections --- */
+.resume-section {
+  margin-top: 0.46rem;
+}
+
+.resume-section-title {
+  margin: 0 0 0.3rem;
+  padding-bottom: 0.12rem;
+  font-size: 8.6pt;
+  font-weight: 700;
+  /* Wider tracking extracts as "E D U C AT I O N"; 0.05em is the value both
+     poppler and pdf.js read as words, and it is not monotonic - 0.1em is worse
+     than 0.14em. Retest with `npm run resume:verify` before changing it. */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  break-after: avoid;
+}
+
+.resume-summary {
+  margin: 0;
+}
+
+/* --- Entries --- */
+/* Entries are now taller than a page's remaining space, so keep heads with
+   their bodies rather than keeping whole entries together. */
+.resume-entry-head,
+.resume-entry-subtitle,
+.resume-entry-summary {
+  break-after: avoid;
+}
+
+.resume-project {
+  break-inside: avoid;
+}
+
+.resume-entry + .resume-entry {
+  margin-top: 0.42rem;
+}
+
+.resume-entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.resume-entry-title {
+  margin: 0;
+  font-size: 10.4pt;
+  font-weight: 700;
+}
+
+.resume-entry-dates {
+  font-size: 8.2pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.resume-entry-subtitle {
+  margin: 0;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.resume-entry-summary {
+  margin: 0.1rem 0 0;
+}
+
+/* Education fits title, degree, and dates on one line */
+.resume-entry-compact .resume-entry-head {
+  justify-content: flex-start;
+  gap: 0.4rem;
+}
+
+.resume-entry-compact .resume-entry-dates {
+  margin-left: auto;
+}
+
+.resume-entry-compact .resume-entry-subtitle {
+  font-weight: 400;
+}
+
+.resume-entry-compact + .resume-entry-compact {
+  margin-top: 0.16rem;
+}
+
+/* --- Projects nested under an employer --- */
+.resume-projects {
+  margin: 0.28rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-project + .resume-project {
+  margin-top: 0.28rem;
+}
+
+.resume-project-name {
+  font-weight: 600;
+}
+
+.resume-project-description {
+  color: var(--muted);
+}
+
+.resume-highlights {
+  margin: 0.12rem 0 0;
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+.resume-highlights li {
+  margin-bottom: 0.06rem;
+  break-inside: avoid;
+}
+
+/* --- Skills, awards, interests --- */
+.resume-skills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-skill-name {
+  font-weight: 600;
+}
+
+.resume-awards {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.resume-award-title {
+  font-weight: 600;
+}
+
+.resume-interests {
+  margin: 0;
+  color: var(--muted);
+}

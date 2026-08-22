@@ -8,8 +8,8 @@ const routes: Array<{ path: string; expected: RegExp }> = [
   { path: "/info", expected: /james easter/i },
   { path: "/work", expected: /navportal/i },
   { path: "/contact", expected: /send/i },
-  // The <object> fallback link; /resume/i would also match the page title
-  { path: "/resume", expected: /download resume/i },
+  // An employer heading; /resume/i would also match the page title
+  { path: "/resume", expected: /digital bazaar/i },
 ];
 
 describe("AnimatedRoutes", () => {

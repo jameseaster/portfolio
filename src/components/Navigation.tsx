@@ -40,6 +40,7 @@ const Navigation: React.FC = () => {
   return (
     <Grid
       container
+      data-print="hide"
       sx={{
         alignItems: "center",
         justifyContent: "center",
