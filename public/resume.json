@@ -135,10 +135,10 @@
       "name": "Winterfest",
       "entity": "Leverstack LLC (formerly James M Easter LLC)",
       "type": "application",
-      "description": "Interactive mobile conference application for iOS and Android.",
+      "description": "Interactive iOS and Android conference app with live polling, schedules, news, and raffles.",
       "startDate": "2022-10",
       "highlights": [
-        "Sole developer through six major versions: live audience polling and vote tallying, schedules, news, push notifications, and virtual raffles.",
+        "Sole developer through six major versions, serving 7,401 attendees who cast 8,802 live poll votes and claimed 18,858 raffle entries across events in two states.",
         "Run three environments from one codebase, local Firebase emulators through staging to production, selected by native build target and covered by integration tests in CI."
       ],
       "keywords": ["React Native", "TypeScript", "Firebase"]

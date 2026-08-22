@@ -34,6 +34,10 @@
   system, alongside the California DMV, CalOES, and DHS credential pilots and a
   registered CBOR-LD entry. The resume had one quantified claim; it now carries
   named clients, public products, and measured numbers.
+- Real Winterfest usage on the resume: 7,401 attendees, 8,802 live poll votes,
+  and 18,858 raffle claims, taken from the production dashboard. This replaces
+  "thousands of results within seconds", which overstated it - the largest single
+  poll drew about a thousand votes, and nothing measured the latency.
 - `npm run resume:verify`, which re-renders the resume artifacts and fails if
   they differ from the committed ones. It runs in CI after the build, so the
   PDFs cannot drift away from `src/data/resume.json` unnoticed - Netlify deploys
