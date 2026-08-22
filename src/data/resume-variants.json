@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "frontend": {
+      "label": "Front-end",
+      "file": "Frontend",
+      "tags": ["frontend", "gis", "startup"]
+    },
+    "vc": {
+      "label": "Verifiable credentials",
+      "file": "VC",
+      "tags": ["vc", "startup"]
+    },
+    "gis": {
+      "label": "GIS",
+      "file": "GIS",
+      "tags": ["gis", "frontend"]
+    },
+    "corporate": {
+      "label": "Corporate",
+      "file": "Corporate",
+      "tags": ["vc", "gis", "frontend"]
+    }
+  },
+  "tags": {
+    "work": {
+      "Woolpert": ["gis", "frontend"],
+      "Leverstack LLC (formerly James M Easter LLC)": ["startup"],
+      "Optimal GEO": ["frontend"]
+    },
+    "projects": {
+      "Veres Wallet": ["vc", "frontend"],
+      "VC Playground": ["vc"],
+      "NavPortal": ["gis", "frontend"],
+      "Secure Care Connect": ["vc", "startup"],
+      "Winterfest Mobile App": ["startup", "frontend"]
+    }
+  }
+}

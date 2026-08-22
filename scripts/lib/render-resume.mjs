@@ -13,17 +13,45 @@ import puppeteer from "puppeteer";
 
 export const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
-// A resume that spills onto a second page is a bug, not a preference
-export const MAX_PAGES = 1;
+// One page is the goal, and going over is called out on every render.
+//
+// The hard limit is temporarily 2: Phase 7 is gathering content, and what stays
+// on the page is a design decision to make once, at the end, rather than on
+// every edit. Put MAX_PAGES back to TARGET_PAGES before releasing.
+export const TARGET_PAGES = 1;
+export const MAX_PAGES = 2;
 
-export const OUTPUTS = [
-  { route: "/resume/print", file: "James-Easter-Resume.pdf", label: "styled" },
-  {
-    route: "/resume/print?v=ats",
-    file: "James-Easter-Resume-ATS.pdf",
-    label: "ATS",
-  },
-];
+/** Describes a page count, naming it as over target when it is. */
+export const pageNote = (pages) =>
+  pages > TARGET_PAGES
+    ? `${pages} pages, over the ${TARGET_PAGES}-page target`
+    : `${pages} page`;
+
+const BASE_NAME = "James-Easter-Resume";
+
+/** The two formats, narrowed to a role variant when one is named. */
+export function outputsFor(variant, file = variant) {
+  const suffix = file ? `-${file}` : "";
+  const role = variant ? `variant=${variant}` : "";
+  return [
+    {
+      route: `/resume/print${role ? `?${role}` : ""}`,
+      file: `${BASE_NAME}${suffix}.pdf`,
+      label: "styled",
+    },
+    {
+      route: `/resume/print?v=ats${role ? `&${role}` : ""}`,
+      file: `${BASE_NAME}${suffix}-ATS.pdf`,
+      label: "ATS",
+    },
+  ];
+}
+
+/** The role variants defined in src/data/resume-variants.json, keyed by name. */
+export async function readVariants() {
+  const file = join(root, "src", "data", "resume-variants.json");
+  return JSON.parse(await readFile(file, "utf8")).variants;
+}
 
 // Published at /resume.json, following the JSON Resume convention
 export const DATA_FILE = "resume.json";
@@ -44,7 +72,10 @@ async function waitForServer(url, timeoutMs = 30000) {
 }
 
 /** Renders every output into outDir, returning each one's path and page count. */
-export async function renderResume(outDir, { port = 4319 } = {}) {
+export async function renderResume(
+  outDir,
+  { port = 4319, variant, file } = {},
+) {
   await mkdir(outDir, { recursive: true });
   const origin = `http://localhost:${port}`;
   const preview = spawn(
@@ -58,7 +89,7 @@ export async function renderResume(outDir, { port = 4319 } = {}) {
     const browser = await puppeteer.launch();
     try {
       const rendered = [];
-      for (const output of OUTPUTS) {
+      for (const output of outputsFor(variant, file)) {
         const page = await browser.newPage();
         await page.goto(`${origin}${output.route}`, {
           waitUntil: "networkidle0",

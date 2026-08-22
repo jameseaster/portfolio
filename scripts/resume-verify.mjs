@@ -11,6 +11,8 @@ import { extractText, getDocumentProxy } from "unpdf";
 import {
   DATA_FILE,
   MAX_PAGES,
+  pageNote,
+  readVariants,
   renderResume,
   root,
 } from "./lib/render-resume.mjs";
@@ -51,7 +53,9 @@ try {
 
   for (const { file, path, pages } of rendered) {
     if (pages > MAX_PAGES) {
-      failures.push(`${file}: renders ${pages} pages, expected ${MAX_PAGES}`);
+      failures.push(
+        `${file}: renders ${pages} pages, over the ${MAX_PAGES}-page limit`,
+      );
       continue;
     }
 
@@ -75,7 +79,28 @@ try {
           firstDifference(committed.text, current.text),
       );
     } else {
-      console.log(`OK public/${file} (${current.pages} page)`);
+      console.log(`OK public/${file} (${pageNote(current.pages)})`);
+    }
+  }
+
+  // Variants are generated on demand, so there is nothing committed to diff -
+  // but a data edit can still push one onto a second page, and finding that out
+  // while applying for a job is too late
+  for (const [name, variant] of Object.entries(await readVariants())) {
+    const pages = await renderResume(outDir, {
+      port: Number(process.env.PORT) || 4320,
+      variant: name,
+      file: variant.file,
+    });
+    const overflowed = pages.filter((output) => output.pages > MAX_PAGES);
+    for (const { file, pages: count } of overflowed) {
+      failures.push(
+        `${file}: renders ${count} pages, over the ${MAX_PAGES}-page limit`,
+      );
+    }
+    if (overflowed.length === 0) {
+      const most = Math.max(...pages.map((output) => output.pages));
+      console.log(`OK --variant=${name} (${pageNote(most)})`);
     }
   }
 

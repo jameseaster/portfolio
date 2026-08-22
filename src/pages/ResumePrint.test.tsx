@@ -32,6 +32,14 @@ describe("the print route", () => {
     expect(screen.getByText("Interests")).toBeInTheDocument();
   });
 
+  it("narrows the document to a role variant", () => {
+    renderAt("/resume/print?variant=corporate");
+    expect(screen.queryByText(/Leverstack/)).not.toBeInTheDocument();
+    // Its client work must resurface rather than vanish with the employer
+    expect(screen.getByText("Selected Projects")).toBeInTheDocument();
+    expect(screen.getByText("Winterfest Mobile App")).toBeInTheDocument();
+  });
+
   it("still renders the full app on a normal route", () => {
     renderAt("/resume");
     expect(

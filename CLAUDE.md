@@ -14,7 +14,8 @@ Personal portfolio site for jameseaster.dev - a Vite single-page app in React + 
 - `npm run preview` - serve the built `dist/` locally
 - `npm run test` - run the Vitest smoke tests in watch mode
 - `npm run test:run` - run the tests once (CI mode); `npm run test:run -- src/App.test.tsx` runs a single file, `-t "name"` filters by name
-- `npm run resume:pdf` - build, then render `/resume/print` and `/resume/print?v=ats` to `public/James-Easter-Resume.pdf` and `public/James-Easter-Resume-ATS.pdf` with headless Chrome, and copy `resume.json` to `public/`. Fails if either PDF exceeds one page. Run it after editing `src/data/resume.json` and commit the regenerated files.
+- `npm run resume:pdf` - build, then render `/resume/print` and `/resume/print?v=ats` to `public/James-Easter-Resume.pdf` and `public/James-Easter-Resume-ATS.pdf` with headless Chrome, and copy `resume.json` to `public/`. Reports each PDF's page count and fails past the page budget in `scripts/lib/render-resume.mjs` (one page is the target; the budget is temporarily two while Phase 7 gathers content). Run it after editing `src/data/resume.json` and commit the regenerated files.
+- `npm run resume:pdf -- --variant=frontend` - render one role variant into `variant-resumes/` (git-ignored) instead of `public/`. Variants are defined in `src/data/resume-variants.json`; run with an unknown name to list them.
 - `npm run resume:verify` - re-render the resume artifacts into a temp directory and fail if they differ from the ones committed in `public/`. Runs in CI after the build. Compares page count and extracted text rather than bytes, since Chrome stamps a timestamp into every PDF.
 
 Type-checking is `tsc` (run as part of `build`); there is no separate ESLint script. Code style is Prettier (default config).
@@ -34,7 +35,7 @@ Type-checking is `tsc` (run as part of `build`); there is no separate ESLint scr
 schema and is the single source of truth for the resume. `src/data/resume.ts` holds the
 TypeScript types (tsc structurally checks the JSON against them on build) plus date and
 grouping helpers; `src/data/resume.test.ts` validates it with `zod` and enforces
-length budgets that keep the resume to one page. Named products live in
+length budgets that keep the resume near one page. Named products live in
 `projects[]` with an `entity` naming their employer, so they can render nested
 under the employer or flat. `src/components/resume/` renders it. Edit the JSON to
 change the resume, never the components.
@@ -51,6 +52,15 @@ spacing splits words on extraction and a wide flex gap reorders the text.
 `scripts/lib/render-resume.mjs` owns the rendering and is shared by
 `scripts/resume-pdf.mjs`, which writes the committed artifacts, and
 `scripts/resume-verify.mjs`, which renders to a temp directory and diffs.
+
+**Role variants**: `src/data/resume-variants.json` tags `work[]` and `projects[]`
+entries by name and defines which tags each variant wants. `src/data/variants.ts`
+applies it. An entry with no tags is core and appears in every variant; a tagged
+entry appears only where a variant asks for one of its tags. Tags live outside
+`resume.json` so the published `/resume.json` stays exactly JSON Resume. Filtering
+an employer promotes its orphaned projects into a "Selected Projects" section
+rather than dropping them. `src/data/variants.test.ts` enforces that the tag file
+references real entries and that variants and entries share one tag vocabulary.
 
 Two deliberate deviations from the conventions below:
 

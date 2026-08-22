@@ -133,10 +133,8 @@ describe("resume.json", () => {
     const employers = new Set(resume.work.map((work) => work.name));
     for (const project of resume.projects) {
       if (!project.entity) continue;
-      const matched = [...employers].some((name) =>
-        name.startsWith(project.entity!),
-      );
-      expect(matched, `unknown entity: ${project.entity}`).toBe(true);
+      // Exact match, because that is what projectsFor uses to nest them
+      expect(employers.has(project.entity), `unknown entity`).toBe(true);
     }
   });
 
@@ -165,7 +163,7 @@ describe("resume helpers", () => {
   });
 
   it("groups projects under their employer", () => {
-    expect(projectsFor("Digital Bazaar").map((p) => p.name)).toEqual([
+    expect(projectsFor(resume, "Digital Bazaar").map((p) => p.name)).toEqual([
       "Veres Wallet",
       "VC Playground",
     ]);

@@ -14,9 +14,20 @@
 - `npm run resume:pdf`, which renders the `/resume/print` route to
   `public/James-Easter-Resume.pdf` with headless Chrome. The PDF is the same DOM
   the site renders, keeps a selectable text layer, and is tagged for screen
-  readers and parsers. The command fails if the resume runs past one page.
+  readers and parsers. The command reports the page count and fails past the
+  page budget.
 - The resume data published at `/resume.json`, following the JSON Resume
   convention, so the resume is consumable by tooling and not only by eye.
+- Role variants for the resume. `npm run resume:pdf -- --variant=frontend`
+  narrows it to the work worth showing for a kind of role and writes the PDFs to
+  `variant-resumes/`, which git ignores - a variant is generated for a particular
+  application rather than published. Tags live in
+  `src/data/resume-variants.json`, so the published `/resume.json` stays exactly
+  JSON Resume. Untagged entries are core and appear in every variant; the
+  page-count check covers each variant, so none can quietly overflow.
+- A "Selected Projects" section, which catches client work whose employer a
+  variant filtered out, so filtering an employer never silently discards the work
+  done for it.
 - `npm run resume:verify`, which re-renders the resume artifacts and fails if
   they differ from the committed ones. It runs in CI after the build, so the
   PDFs cannot drift away from `src/data/resume.json` unnoticed - Netlify deploys
@@ -45,6 +56,12 @@
 
 ### Fixed
 
+- Secure Care Connect and the Winterfest mobile app now appear on the resume.
+  They were attributed to `Leverstack LLC` while the employer is listed as
+  `Leverstack LLC (formerly James M Easter LLC)`, and the exact-match grouping
+  dropped both without a word - taking the resume's only quantified claim with
+  them. The test that was meant to catch this compared with `startsWith`, so it
+  passed; it now matches exactly, the way the renderer does.
 - Section headings and the job title in the styled PDF now survive text
   extraction. Their tracking was wide enough that copying "EDUCATION" out of the
   PDF yielded "E D U C AT I O N", which also meant search engines indexed the

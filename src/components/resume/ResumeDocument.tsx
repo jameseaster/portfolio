@@ -7,6 +7,7 @@ import {
   formatDateRange,
   projectsFor,
   resume as defaultResume,
+  unattachedProjects,
   type Resume,
   type ResumeProject,
 } from "../../data/resume";
@@ -62,6 +63,7 @@ const ResumeDocument: React.FC<ResumeDocumentProps> = ({
   resume = defaultResume,
 }) => {
   const { basics, work, education, skills, awards, interests } = resume;
+  const selected = unattachedProjects(resume);
 
   return (
     <article className={`resume resume-${variant}`}>
@@ -73,7 +75,7 @@ const ResumeDocument: React.FC<ResumeDocumentProps> = ({
 
       <ResumeSection title="Experience">
         {work.map((job) => {
-          const projects = projectsFor(job.name);
+          const projects = projectsFor(resume, job.name);
           return (
             <ResumeEntry
               key={`${job.name}-${job.startDate}`}
@@ -94,6 +96,12 @@ const ResumeDocument: React.FC<ResumeDocumentProps> = ({
           );
         })}
       </ResumeSection>
+
+      {selected.length > 0 && (
+        <ResumeSection title="Selected Projects">
+          <ProjectList projects={selected} />
+        </ResumeSection>
+      )}
 
       <ResumeSection title="Skills">
         <ul className="resume-skills">

@@ -103,8 +103,24 @@ export interface Resume {
 export const resume: Resume = data;
 
 /** Projects belonging to a given employer, in data order. */
-export const projectsFor = (employer: string): ResumeProject[] =>
+export const projectsFor = (
+  resume: Resume,
+  employer: string,
+): ResumeProject[] =>
   resume.projects.filter((project) => project.entity === employer);
+
+/**
+ * Projects with no employer left to nest under.
+ *
+ * A role variant can filter out an employer while keeping its client work, so
+ * those projects render flat as "Selected Projects" rather than disappearing.
+ */
+export const unattachedProjects = (resume: Resume): ResumeProject[] => {
+  const employers = new Set(resume.work.map((job) => job.name));
+  return resume.projects.filter(
+    (project) => !project.entity || !employers.has(project.entity),
+  );
+};
 
 /** Formats a JSON Resume `YYYY-MM` date as `Month YYYY`; open ranges read "Present". */
 export const formatDate = (date?: string): string => {
