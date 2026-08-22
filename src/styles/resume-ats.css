@@ -1,0 +1,106 @@
+/* ATS styling for /resume/print?v=ats. Layers over resume-print.css, scoped to
+   the variant, so the styled PDF is untouched.
+
+   Everything a resume parser reads badly is turned off here: the two-column
+   header, the rules, letter-spaced headings, and dates pinned to the right
+   margin - a wide flex gap drops them out of order in the text layer. */
+
+/* Letter-spacing splits words on extraction: "E D U C AT I O N" */
+.resume.resume-ats * {
+  color: #000;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.resume-ats {
+  font-size: 10pt;
+}
+
+/* --- Header: one column, contact beneath the name --- */
+.resume-ats .resume-header {
+  display: block;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.resume-ats .resume-name {
+  font-size: 16pt;
+}
+
+.resume-ats .resume-label {
+  margin-top: 0;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.resume-ats .resume-contact {
+  margin-top: 0.1rem;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+}
+
+.resume-ats .resume-contact li {
+  display: inline;
+}
+
+.resume-ats .resume-contact li + li::before {
+  content: " | ";
+}
+
+/* --- Sections: plain bold headings, no rules --- */
+.resume-ats .resume-section {
+  margin-top: 0.5rem;
+}
+
+.resume-ats .resume-section-title {
+  margin-bottom: 0.1rem;
+  padding-bottom: 0;
+  font-size: 11pt;
+  border-bottom: 0;
+}
+
+/* --- Entries: dates as text beside the employer, not at the margin --- */
+.resume-ats .resume-entry-head {
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.resume-ats .resume-entry-title,
+.resume-ats .resume-entry-dates {
+  font-size: inherit;
+}
+
+.resume-ats .resume-entry-dates::before {
+  content: "| ";
+}
+
+.resume-ats .resume-entry-compact .resume-entry-dates {
+  margin-left: 0;
+}
+
+/* Education runs on one line, so mark where the school ends and the degree starts */
+.resume-ats .resume-entry-compact .resume-entry-subtitle::before {
+  content: "| ";
+}
+
+/* --- Lists: literal hyphens, since drawn bullet glyphs do not extract --- */
+.resume-ats .resume-highlights,
+.resume-ats .resume-awards {
+  padding-left: 0.75rem;
+  list-style: none;
+}
+
+.resume-ats .resume-highlights li,
+.resume-ats .resume-awards li {
+  text-indent: -0.75rem;
+}
+
+.resume-ats .resume-highlights li::before,
+.resume-ats .resume-awards li::before {
+  content: "- ";
+}
+
+.resume-ats .resume-project-description::before {
+  content: " - ";
+}

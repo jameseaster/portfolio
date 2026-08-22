@@ -1,4 +1,54 @@
-## Unreleased - 2.1.1
+## Unreleased - 2.2.0
+
+### Added
+
+- A resume page built from structured data. `src/data/resume.json` follows the
+  JSON Resume schema and is the single source of truth for the resume, replacing
+  the embedded PDF that rendered inconsistently outside Chrome and was unusable
+  on mobile.
+- schema.org `Person` JSON-LD, generated from that data and injected into
+  `index.html` at build time so crawlers that do not execute JavaScript still
+  see it.
+- Print styles on the resume page, so printing yields the resume rather than the
+  surrounding navigation and controls.
+- `npm run resume:pdf`, which renders the `/resume/print` route to
+  `public/James-Easter-Resume.pdf` with headless Chrome. The PDF is the same DOM
+  the site renders, keeps a selectable text layer, and is tagged for screen
+  readers and parsers. The command fails if the resume runs past one page.
+- The resume data published at `/resume.json`, following the JSON Resume
+  convention, so the resume is consumable by tooling and not only by eye.
+- An ATS variant of the resume at `public/James-Easter-Resume-ATS.pdf`, rendered
+  from the same data by `npm run resume:pdf`. It is single column with plain
+  headings, no rules, and dates as text, so applicant tracking systems read it in
+  the right order. Letter-spaced headings extracted as "E D U C AT I O N" and
+  right-aligned dates were dropped to the end of the document, so both are gone
+  from this variant.
+
+### Changed
+
+- The resume page renders React components instead of embedding a PDF in an
+  `<object>` element.
+- `vite.config.mts` is type-checked by the root `tsconfig.json`; the separate
+  `tsconfig.node.json` project reference is gone.
+- The resume download serves a stable `/James-Easter-Resume.pdf` rather than a
+  content-hashed bundled asset, so the URL can be pasted into an application.
+- The resume download button opens a menu offering the styled PDF or the ATS
+  version, rather than downloading the styled PDF directly.
+
+### Removed
+
+- `src/assets/resume.pdf`, the hand-made May 2023 PDF the page used to embed.
+
+### Fixed
+
+- Section headings in the styled PDF now survive text extraction. Their tracking
+  was wide enough that copying "EDUCATION" out of the PDF yielded
+  "E D U C AT I O N", which also meant search engines indexed the heading as
+  nine separate letters.
+- Woolpert now ends in October 2023 on the resume. It previously read "Present"
+  at the same time as Digital Bazaar, showing two concurrent full-time roles.
+- The malformed `<meta name="James Easter">` tag in `index.html`, which set the
+  page description under a `name` of "James Easter" rather than `description`.
 
 ## 2.1.0 - 2026-08-13
 

@@ -27,6 +27,6 @@ describe("Navigation", () => {
     renderNav();
     await user.click(screen.getByRole("button", { name: "Resume" }));
     // findBy, not getBy: AnimatePresence mode="wait" defers the incoming page
-    expect(await screen.findByText(/download resume/i)).toBeInTheDocument();
+    expect(await screen.findByText(/digital bazaar/i)).toBeInTheDocument();
   });
 });
