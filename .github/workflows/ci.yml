@@ -37,3 +37,10 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # npm ci runs Puppeteer's postinstall, but do not depend on that staying on
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
+
+      - name: Verify the resume artifacts match the data
+        run: npm run resume:verify

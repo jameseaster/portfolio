@@ -17,6 +17,10 @@
   readers and parsers. The command fails if the resume runs past one page.
 - The resume data published at `/resume.json`, following the JSON Resume
   convention, so the resume is consumable by tooling and not only by eye.
+- `npm run resume:verify`, which re-renders the resume artifacts and fails if
+  they differ from the committed ones. It runs in CI after the build, so the
+  PDFs cannot drift away from `src/data/resume.json` unnoticed - Netlify deploys
+  what is in the repo, not what the data says.
 - An ATS variant of the resume at `public/James-Easter-Resume-ATS.pdf`, rendered
   from the same data by `npm run resume:pdf`. It is single column with plain
   headings, no rules, and dates as text, so applicant tracking systems read it in
@@ -41,10 +45,10 @@
 
 ### Fixed
 
-- Section headings in the styled PDF now survive text extraction. Their tracking
-  was wide enough that copying "EDUCATION" out of the PDF yielded
-  "E D U C AT I O N", which also meant search engines indexed the heading as
-  nine separate letters.
+- Section headings and the job title in the styled PDF now survive text
+  extraction. Their tracking was wide enough that copying "EDUCATION" out of the
+  PDF yielded "E D U C AT I O N", which also meant search engines indexed the
+  heading as nine separate letters.
 - Woolpert now ends in October 2023 on the resume. It previously read "Present"
   at the same time as Digital Bazaar, showing two concurrent full-time roles.
 - The malformed `<meta name="James Easter">` tag in `index.html`, which set the

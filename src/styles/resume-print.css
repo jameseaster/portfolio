@@ -60,7 +60,8 @@ body {
   margin: 0.1rem 0 0;
   font-size: 9pt;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  /* See the tracking note on .resume-section-title */
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -85,7 +86,9 @@ body {
   padding-bottom: 0.12rem;
   font-size: 8.6pt;
   font-weight: 700;
-  /* Wider tracking than this extracts as "E D U C AT I O N" from the PDF */
+  /* Wider tracking extracts as "E D U C AT I O N"; 0.05em is the value both
+     poppler and pdf.js read as words, and it is not monotonic - 0.1em is worse
+     than 0.14em. Retest with `npm run resume:verify` before changing it. */
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);

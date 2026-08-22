@@ -15,6 +15,7 @@ Personal portfolio site for jameseaster.dev - a Vite single-page app in React + 
 - `npm run test` - run the Vitest smoke tests in watch mode
 - `npm run test:run` - run the tests once (CI mode); `npm run test:run -- src/App.test.tsx` runs a single file, `-t "name"` filters by name
 - `npm run resume:pdf` - build, then render `/resume/print` and `/resume/print?v=ats` to `public/James-Easter-Resume.pdf` and `public/James-Easter-Resume-ATS.pdf` with headless Chrome, and copy `resume.json` to `public/`. Fails if either PDF exceeds one page. Run it after editing `src/data/resume.json` and commit the regenerated files.
+- `npm run resume:verify` - re-render the resume artifacts into a temp directory and fail if they differ from the ones committed in `public/`. Runs in CI after the build. Compares page count and extracted text rather than bytes, since Chrome stamps a timestamp into every PDF.
 
 Type-checking is `tsc` (run as part of `build`); there is no separate ESLint script. Code style is Prettier (default config).
 
@@ -44,8 +45,12 @@ bypasses `ColorModeProvider`, `CssBaseline`, `Navigation`, and `AnimatePresence`
 so the PDF cannot inherit the dark theme, app chrome, or a mid-animation frame.
 `?v=ats` selects the plain variant, styled by `src/styles/resume-ats.css` - rules
 scoped under `.resume-ats` and loaded after the print stylesheet, so the styled
-PDF is untouched. Verify changes to it with `pdftotext`, not by eye: letter
+PDF is untouched. Verify changes to it by extracting text, not by eye: letter
 spacing splits words on extraction and a wide flex gap reorders the text.
+
+`scripts/lib/render-resume.mjs` owns the rendering and is shared by
+`scripts/resume-pdf.mjs`, which writes the committed artifacts, and
+`scripts/resume-verify.mjs`, which renders to a temp directory and diffs.
 
 Two deliberate deviations from the conventions below:
 
