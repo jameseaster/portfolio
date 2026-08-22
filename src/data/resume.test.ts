@@ -15,7 +15,7 @@ const BUDGET = {
   workSummary: 120,
   projectDescription: 100,
   highlight: 180,
-  totalHighlights: 10,
+  totalHighlights: 18,
 };
 
 const schema = z.object({
@@ -164,6 +164,7 @@ describe("resume helpers", () => {
 
   it("groups projects under their employer", () => {
     expect(projectsFor(resume, "Digital Bazaar").map((p) => p.name)).toEqual([
+      "Veres Admin Interface",
       "Veres Wallet",
       "VC Playground",
     ]);

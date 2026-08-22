@@ -5,7 +5,7 @@
     "label": "Software Engineer",
     "email": "james.m.easter@gmail.com",
     "url": "https://jameseaster.dev",
-    "summary": "Full stack software engineer with a front-end focus on structure, aesthetics, and performance. Experienced across W3C Verifiable Credentials, large-scale GIS platforms, and reusable React component libraries.",
+    "summary": "Full stack engineer who leads front-end architecture on systems people depend on: drone flight operations for the US Army Corps of Engineers, and W3C Verifiable Credential platforms behind California DMV, CalOES, and DHS pilots. Comfortable migrating state layers, building test suites, and shipping mobile apps.",
     "profiles": [
       {
         "network": "LinkedIn",
@@ -26,8 +26,12 @@
       "location": "Remote",
       "url": "https://digitalbazaar.com",
       "startDate": "2023-10",
-      "summary": "Full stack development centered on W3C Verifiable Credentials.",
-      "highlights": []
+      "summary": "Full stack development on W3C Verifiable Credential platforms for government and enterprise pilots.",
+      "highlights": [
+        "Built the issuance and verification coordinator APIs behind California DMV, CalOES, and DHS first responder credential pilots, one codebase serving several government deployments.",
+        "Registered CBOR-LD entry 31000001 for California DMV Disabled Person Parking Placards, and contributed to the W3C CBOR-LD and Verifiable Credentials specifications.",
+        "Shipped barcode and QR capture across wallet and verifier apps, moving to the Barcode Detection API and retiring a paid third-party scanner dependency."
+      ]
     },
     {
       "name": "Woolpert",
@@ -37,15 +41,21 @@
       "startDate": "2022-09",
       "endDate": "2023-10",
       "summary": "Lead front-end developer focused on application structure, aesthetics, and performance.",
-      "highlights": []
+      "highlights": [
+        "Maintained and extended a large reusable Material-UI component library shared across the team's GIS applications."
+      ]
     },
     {
       "name": "Leverstack LLC (formerly James M Easter LLC)",
       "position": "Owner & Engineer",
       "location": "Remote",
+      "url": "https://leverstack.io",
       "startDate": "2022-01",
-      "summary": "Deliver full stack web and mobile applications customized for clients.",
-      "highlights": []
+      "summary": "Full stack web and mobile applications delivered under contract, from discovery through production.",
+      "highlights": [
+        "Built Badge Birdie, a workplace occupancy analytics product: CSV ingestion with column mapping, charting and filtering, and Stripe subscriptions across staged environments.",
+        "Delivered Secure Care Connect, a verifiable credential health care application, end to end with weekly client presentations through production release."
+      ]
     },
     {
       "name": "Optimal GEO",
@@ -54,10 +64,37 @@
       "startDate": "2020-08",
       "endDate": "2022-09",
       "summary": "Front-end lead React developer and presenter for company contracts.",
-      "highlights": []
+      "highlights": [
+        "Sole front-end developer on a hydrographic survey production system for USACE: lidar block tracking, sprint planning, QC scoring, and map-driven status workflows."
+      ]
     }
   ],
   "projects": [
+    {
+      "name": "OPTIC",
+      "entity": "Leverstack LLC (formerly James M Easter LLC)",
+      "type": "application",
+      "description": "Drone flight operations platform for the US Army Corps of Engineers.",
+      "startDate": "2025-09",
+      "highlights": [
+        "Led the migration of thirteen React contexts onto Redux Toolkit slices across a 75,000-line codebase, then paginated missions and fixed a selector memo causing a render loop.",
+        "Grew the test suite from nothing to 942 tests and drove a type-safety migration to zero any casts and zero suppressions, with typecheck enforced in CI.",
+        "Designed the error-handling contract now shared by the data, Redux, and component layers, and shipped mission planning, hazard risk assessment, and approval signature chains."
+      ],
+      "keywords": ["React", "Redux Toolkit", "TypeScript", "ArcGIS", "GIS"]
+    },
+    {
+      "name": "Veres Admin Interface",
+      "entity": "Digital Bazaar",
+      "type": "application",
+      "description": "Administrative console for the Veres verifiable credential platform.",
+      "startDate": "2025-10",
+      "highlights": [
+        "Sole author across 451 of 462 commits, from first commit to production: organizations, issuer and status instances, verification workflows, refresh policies, and zcaps.",
+        "Wrote the client library the console is built on, plus the Terraform that deploys it."
+      ],
+      "keywords": ["Vue", "JavaScript", "Terraform", "Verifiable Credentials"]
+    },
     {
       "name": "Veres Wallet",
       "entity": "Digital Bazaar",
@@ -65,10 +102,10 @@
       "description": "W3C Verifiable Credential wallet.",
       "startDate": "2023-10",
       "highlights": [
-        "Shipped QR code scanning for credential capture, credential detail views, and dynamic render-method image display.",
-        "Led a UI redesign and its implementation to modernize the look and feel."
+        "Shipped credential detail views, QR capture, NFC transfer, and dynamic display driven by each credential's own renderMethod SVG templates.",
+        "Led a UI redesign of the dashboard, login, and registration, and migrated components to the Vue Composition API."
       ],
-      "keywords": ["Verifiable Credentials", "Vue", "JavaScript"]
+      "keywords": ["Vue", "Quasar", "Verifiable Credentials", "JavaScript"]
     },
     {
       "name": "VC Playground",
@@ -78,7 +115,7 @@
       "description": "Public platform for issuing and verifying example verifiable credentials.",
       "startDate": "2023-10",
       "highlights": [
-        "Create, update, and maintain verifiable credentials, queries, and JSON-LD contexts powering the playground's issuing and verification flows."
+        "Maintain the credentials, queries, and JSON-LD contexts behind it, including selective disclosure and multi-protocol QR issuance over VC API and OID4VCI."
       ],
       "keywords": ["Verifiable Credentials", "JSON-LD", "Vue"]
     },
@@ -87,33 +124,24 @@
       "entity": "Woolpert",
       "type": "application",
       "description": "Hydrographic data platform for the US Army Corps of Engineers.",
-      "startDate": "2022-09",
+      "startDate": "2021-06",
       "endDate": "2023-10",
       "highlights": [
-        "Combined React, ArcGIS, Koop, and Elasticsearch to render and manipulate GIS data with dynamic visualizations, filtering, searching, and custom widgets.",
-        "Maintained and refined a large-scale reusable Material-UI component library for a cleaner, more extensible front-end."
+        "Combined React, ArcGIS, Koop, and Elasticsearch to render and filter hydrographic survey data with dynamic visualizations, search, and custom map widgets."
       ],
       "keywords": ["React", "ArcGIS", "Elasticsearch", "Material-UI", "GIS"]
     },
     {
-      "name": "Secure Care Connect",
+      "name": "Winterfest",
       "entity": "Leverstack LLC (formerly James M Easter LLC)",
       "type": "application",
-      "description": "Verifiable credential health care application.",
+      "description": "Interactive mobile conference application for iOS and Android.",
+      "startDate": "2022-10",
       "highlights": [
-        "Delivered end-to-end development and a mobile-friendly Vue.js design, with weekly progress presentations through production release."
+        "Sole developer through six major versions: live audience polling and vote tallying, schedules, news, push notifications, and virtual raffles.",
+        "Run three environments from one codebase, local Firebase emulators through staging to production, selected by native build target and covered by integration tests in CI."
       ],
-      "keywords": ["Vue", "Quasar", "Verifiable Credentials", "Figma"]
-    },
-    {
-      "name": "Winterfest Mobile App",
-      "entity": "Leverstack LLC (formerly James M Easter LLC)",
-      "type": "application",
-      "description": "Interactive mobile conference application.",
-      "highlights": [
-        "Polls the audience, tallies votes, and displays thousands of results within seconds, alongside schedules, news, and virtual raffles."
-      ],
-      "keywords": ["React Native", "TypeScript"]
+      "keywords": ["React Native", "TypeScript", "Firebase"]
     }
   ],
   "education": [
@@ -144,11 +172,21 @@
     },
     {
       "name": "Front-end",
-      "keywords": ["React", "React Native", "Vue", "Redux", "Material-UI"]
+      "keywords": [
+        "React",
+        "React Native",
+        "Vue",
+        "Redux Toolkit",
+        "Material-UI"
+      ]
     },
     {
       "name": "Back-end & Data",
       "keywords": ["Node.js", "Elasticsearch", "ArcGIS", "JSON-LD"]
+    },
+    {
+      "name": "Platform & Tooling",
+      "keywords": ["Firebase", "Terraform", "Docker", "Vitest", "CI/CD"]
     }
   ],
   "awards": [
@@ -175,7 +213,7 @@
   ],
   "meta": {
     "canonical": "https://jameseaster.dev/resume.json",
-    "version": "1.0.0",
-    "lastModified": "2026-08-21"
+    "version": "1.1.0",
+    "lastModified": "2026-08-22"
   }
 }

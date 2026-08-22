@@ -68,8 +68,8 @@ describe("applyVariant", () => {
   it("promotes the client work the corporate variant orphans", () => {
     const corporate = applyVariant(resume, "corporate");
     expect(names(unattachedProjects(corporate))).toEqual([
-      "Secure Care Connect",
-      "Winterfest Mobile App",
+      "OPTIC",
+      "Winterfest",
     ]);
   });
 

@@ -28,6 +28,12 @@
 - A "Selected Projects" section, which catches client work whose employer a
   variant filtered out, so filtering an employer never silently discards the work
   done for it.
+- Three years of work reconstructed from commit history and added to the resume:
+  the OPTIC drone flight operations platform for the US Army Corps of Engineers,
+  the Veres Admin Interface, Badge Birdie, and a hydrographic survey production
+  system, alongside the California DMV, CalOES, and DHS credential pilots and a
+  registered CBOR-LD entry. The resume had one quantified claim; it now carries
+  named clients, public products, and measured numbers.
 - `npm run resume:verify`, which re-renders the resume artifacts and fails if
   they differ from the committed ones. It runs in CI after the build, so the
   PDFs cannot drift away from `src/data/resume.json` unnoticed - Netlify deploys
@@ -49,6 +55,10 @@
   content-hashed bundled asset, so the URL can be pasted into an application.
 - The resume download button opens a menu offering the styled PDF or the ATS
   version, rather than downloading the styled PDF directly.
+- Resume skills gained a Platform & Tooling group, and Redux Toolkit and Firebase
+  joined the front-end and data groups, matching what the work actually uses.
+- The Winterfest and Secure Care Connect entries were reshaped: Winterfest keeps
+  its own project entry, and Secure Care Connect moves to a Leverstack highlight.
 
 ### Removed
 

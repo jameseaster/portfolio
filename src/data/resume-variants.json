@@ -25,14 +25,15 @@
     "work": {
       "Woolpert": ["gis", "frontend"],
       "Leverstack LLC (formerly James M Easter LLC)": ["startup"],
-      "Optimal GEO": ["frontend"]
+      "Optimal GEO": ["gis", "frontend"]
     },
     "projects": {
+      "OPTIC": ["gis", "frontend"],
+      "Veres Admin Interface": ["vc", "frontend"],
       "Veres Wallet": ["vc", "frontend"],
       "VC Playground": ["vc"],
       "NavPortal": ["gis", "frontend"],
-      "Secure Care Connect": ["vc", "startup"],
-      "Winterfest Mobile App": ["startup", "frontend"]
+      "Winterfest": ["startup", "frontend"]
     }
   }
 }

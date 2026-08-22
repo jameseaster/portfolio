@@ -37,7 +37,7 @@ describe("the print route", () => {
     expect(screen.queryByText(/Leverstack/)).not.toBeInTheDocument();
     // Its client work must resurface rather than vanish with the employer
     expect(screen.getByText("Selected Projects")).toBeInTheDocument();
-    expect(screen.getByText("Winterfest Mobile App")).toBeInTheDocument();
+    expect(screen.getByText("Winterfest")).toBeInTheDocument();
   });
 
   it("still renders the full app on a normal route", () => {
